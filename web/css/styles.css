@@ -1136,6 +1136,13 @@ body {
 	-webkit-transform: scale(1.15);
 	transform: scale(1.15);
 } 
+
+.featuresInfo:hover{
+	-moz-transform: scale(1.05);
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+	cursor: pointer;
+}
 /* end of hover animation */
 
 
@@ -2652,7 +2659,7 @@ a:hover.back-to-top {
 	/* end of call me */
 
 
-	/* Projects */
+	/* Games */
 	.filter .element-item {
 		width: 17.3125rem; /* to eliminate grid overflow problem on hard refresh */
 		height: 16.875rem;
@@ -2661,7 +2668,7 @@ a:hover.back-to-top {
 	.filter .element-item .element-item-overlay span { 
 		top: 45%;
 	}
-	/* end of projects */
+	/* end of Games */
 
 
 	/* Team */
