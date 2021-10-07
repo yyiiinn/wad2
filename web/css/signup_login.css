@@ -249,8 +249,6 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -o-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%); }
   
-  .signup {
-    margin-bottom: 150px; }
   
   .signup-content {
     padding: 75px 0; }
