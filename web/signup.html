@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services.">
+    <meta name="author" content="Inovatik">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Bundled Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
+
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>Welcome to xxx!</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="../web/css/signup_login.css">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="images/favicon.png">
+    </head>
+    <body data-spy="scroll" data-target=".fixed-top">
+        
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+     <!-- navbar -->
+     <div id="nav-placeholder"></div>
+     <script>
+         $(function(){
+         $("#nav-placeholder").load("navbar.html");
+         });
+     </script>
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="signup-container">
+
+                            <div class="main">
+                                <!-- Sign up form -->
+                                <section class="signup">
+                                    <div class="container">
+                                        <div class="signup-content">
+                                            <div class="signup-form">
+                                                <h2 class="form-title">Sign up</h2>
+                                                <form method="POST" class="register-form" id="register-form">
+                                                    <div class="form-group">
+                                                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                                        <input type="text" name="name" id="name" placeholder="Your Name"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                                        <input type="email" name="email" id="email" placeholder="Your Email"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                                        <input type="password" name="pass" id="pass" placeholder="Password"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                                    </div>
+                                                    <div class="form-group form-button">
+                                                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="signup-image">
+                                                <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                                                <a href="login.html" class="signup-image-link">I am already member</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+                        </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
+
+</body>
+</html>
