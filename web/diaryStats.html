@@ -41,8 +41,7 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
     <script src="js/bootstrap-datepicker.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  
 
     <!-- navbar -->
     <div id="nav-placeholder"></div>
@@ -318,9 +317,14 @@
 </div>
   </div>
   <br><br><br>
+  <h3 style="text-align:center;">Your Feelings</h3>
+   <div class="col-12 rounded" style="border: 1px solid lightgray;">
+    <div id="wordCloud"></div>
+  </div>
+  <br><br><br>
         <h3 style="text-align:center;">My Diary</h3>
         <div class="row">
-				<div class="col-12 rounded" style="background:white;border:1px groove grey">
+				<div class="col-12 rounded" style="background:white;border:1px solid lightgray;">
 					<div class="content w-100">
 				    <div class="calendar-container" style="overflow-y: scroll;">
 				      <div class="calendar"> 
@@ -381,6 +385,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/wordcloud.js"></script>
 <script type="text/JavaScript">
 
 $(function () {
@@ -518,6 +525,41 @@ inactive: {
     });
 });
 
- 
-
+$(function () {
+  var feelings = ["angry", "Angry", "Pissed", "Happy", "happy", "Glad", "Neutral", "Normal"];
+  var color = ['#e39898', '#e39898', '#e39898', "#a5e398", "#a5e398", "#a5e398", "#c9c8c5", "#c9c8c5"];
+  var counter = 0;
+    data = Highcharts.reduce(feelings, function (arr, word) {
+          var obj = Highcharts.find(arr, function (obj) {
+              return obj.name === word.charAt(0).toUpperCase() + word.slice(1);
+          });
+          if (obj) {
+              obj.weight += 1;
+          } else {
+              obj = {
+                  name: word.charAt(0).toUpperCase() + word.slice(1),
+                  weight: 1,
+                  color: color[counter]
+              };
+              arr.push(obj);
+          }
+          counter += 1;
+          return arr;
+      }, []);
+      console.log(data);
+      Highcharts.chart('wordCloud', {
+      series: [{
+          type: 'wordcloud',
+          data: data,
+          name: 'Occurrences',
+      }],
+      exporting: {
+    enabled: false
+  },credits: {
+     enabled: false
+  }, title:{
+    text: ''
+  }
+})
+})
 </script>
