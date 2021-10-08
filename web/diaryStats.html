@@ -41,7 +41,8 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
     <script src="js/bootstrap-datepicker.js"></script>
-
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
     <!-- navbar -->
     <div id="nav-placeholder"></div>
@@ -295,8 +296,31 @@
     <br>
     <div class="filter">
 		<div class="container">
-            <div class="row">
-				<div class="col-12" style="background:white;">
+      <h3 style="text-align:center;">Overview</h3>
+      <div class="row">
+      <div class="col-md-4">
+        <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #a5e398 !important;border:1px solid #a5e398;">
+        <p>I feel Positive in 150 out of 300 days...</p>
+        <div id="positivePercent" style="min-width: 100px;min-height: 100px;"></div> 
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #c9c8c5 !important;border:1px solid #c9c8c5;">
+      <p>I feel Neutral in 75 out of 300 days...</p>
+      <div id="neutralPercent" style="min-width: 100px;min-height: 100px;"></div> 
+      </div>
+  </div>
+  <div class="col-md-4">
+    <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #e39898 !important;border:1px solid #e39898;">
+    <p>I feel Negative in 75 out of 300 days...</p>
+    <div id="negativePercent" style="min-width: 100px;min-height: 100px;"></div>
+    </div> 
+</div>
+  </div>
+  <br><br><br>
+        <h3 style="text-align:center;">My Diary</h3>
+        <div class="row">
+				<div class="col-12 rounded" style="background:white;border:1px groove grey">
 					<div class="content w-100">
 				    <div class="calendar-container" style="overflow-y: scroll;">
 				      <div class="calendar"> 
@@ -342,10 +366,11 @@
 				      </div>
 				    </div>
 				    <div class="events-container">
+              <br>
 				    </div>
 				  </div>
 				</div>
-			</div>
+    </div>
                 </div>
 		</div>
         </div>    
@@ -358,7 +383,140 @@
 <script src="js/main.js"></script>
 <script type="text/JavaScript">
 
+$(function () {
+    $('#positivePercent').highcharts({
+      exporting: {
+    enabled: false
+  },credits: {
+     enabled: false
+},
+        colors: ['#a5e398', '#f5f5f5'],
+        title: {
+            text: '50%',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: false
+                },
+                size: 90,
+                borderWidth: 0,
+                renderTo: 'container'
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'positive',
+            innerSize: '90%',
+            data: [50,50],
+            states: {
+hover: {
+enabled: false, 
+lineWidth: 1,
+},
+inactive: {
+        opacity: 1
+      }
+}
+        }],
+        tooltip: {
+        enabled: false,
+        animation: false,
+    },  
+        
+    });
+});
 
+$(function () {
+    $('#neutralPercent').highcharts({
+      exporting: {
+    enabled: false
+  },credits: {
+     enabled: false
+},
+        colors: ['#c9c8c5', '#f5f5f5'],
+        title: {
+            text: '25%',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: false
+                },
+                size: 90,
+                borderWidth: 0,
+                renderTo: 'container'
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'neutral',
+            innerSize: '90%',
+            data: [25,75],
+            states: {
+hover: {
+enabled: false, 
+lineWidth: 1,
+},
+inactive: {
+        opacity: 1
+      }
+}
+        }],
+        tooltip: {
+        enabled: false,
+        animation: false,
+    },  
+        
+    });
+});
+
+$(function () {
+    $('#negativePercent').highcharts({
+      exporting: {
+    enabled: false
+  },credits: {
+     enabled: false
+},
+        colors: ['#e39898', '#f5f5f5'],
+        title: {
+            text: '25%',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: false
+                },
+                size: 90,
+                borderWidth: 0,
+                renderTo: 'container'
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'negative',
+            innerSize: '90%',
+            data: [25,75],
+            states: {
+hover: {
+enabled: false, 
+lineWidth: 1,
+},
+inactive: {
+        opacity: 1
+      }
+}
+        }],
+        tooltip: {
+        enabled: false,
+        animation: false,
+    },  
+        
+    });
+});
 
  
 

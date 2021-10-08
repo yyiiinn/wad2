@@ -185,8 +185,8 @@ function show_events(events, month, day) {
     console.log(event_data["events"]);
     // If there are no events for this date, notify the user
     if(events.length===0) {
-        var event_card = $("<div class='event-card'></div>");
-        var event_name = $("<div class='event-name'>There is no diary entry submitted for "+month+" "+day+".</div>");
+        var event_card = $("<br><div class='event-card'></div>");
+        var event_name = $("<div class='event-name' style='text-align:center;'>There is no diary entry submitted for "+month+" "+day+".</div>");
         $(event_card).css({ "border-left": "10px solid #FF1744" });
         $(event_card).append(event_name);
         $(".events-container").append(event_card);
@@ -194,7 +194,7 @@ function show_events(events, month, day) {
     else {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
-            var event_card = $("<div class='event-card'></div>");
+            var event_card = $("<br><div class='event-card'></div>");
             var hours = $("<div class='event-name'> Hours Slept: "+events[i]["hours"]+"</div>");
             var stress = $("<div class='event-name'> Stress Level: "+events[i]["stress"]+"</div>");
             var anxiety = $("<div class='event-name'> Anxiety Level: "+events[i]["anxiety"]+"</div>");
