@@ -23,12 +23,15 @@
 	
 	/* Navbar Scripts */
 	// jQuery to collapse the navbar on scroll
-    $(window).on('scroll load', function() {
-		if ($(".navbar").offset().top > 20) {
-			$(".fixed-top").addClass("top-nav-collapse");
-		} else {
-			$(".fixed-top").removeClass("top-nav-collapse");
-		}
+    // $(window).on('scroll load', function() {
+	// 	if ($(".navbar").offset().top > 20) {
+	// 		$(".fixed-top").addClass("top-nav-collapse");
+	// 	} else {
+	// 		$(".fixed-top").removeClass("top-nav-collapse");
+	// 	}
+    // });
+    $(window).on('load', function() {
+		$(".fixed-top").addClass("top-nav-collapse");
     });
 
 	// jQuery for page scrolling feature - requires jQuery Easing plugin
