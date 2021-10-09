@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="../web/css/signup_login.css">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
@@ -51,13 +50,13 @@
     <body data-spy="scroll" data-target=".fixed-top">
         
     <!-- Preloader -->
-	<div class="spinner-wrapper">
+	<!-- <div class="spinner-wrapper">
         <div class="spinner">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
             <div class="bounce3"></div>
         </div>
-    </div>
+    </div> -->
     <!-- end of preloader -->
     
      <!-- navbar -->
@@ -67,24 +66,218 @@
          $("#nav-placeholder").load("navbar.html");
          });
      </script>
+
+     <style>
+        * {
+            box-sizing: border-box;
+       }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+       }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 10px;
+            font-family: 'DM Sans', sans-serif;
+            /* transition: background 0.4s ease-in; */
+            
+            background: linear-gradient(-45deg, #8ee1ff, #fca3c3, #96fde5,  #fdb6a1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100%;
+
+            padding-bottom: 180px;
+       }
+
+       @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+
+        input[type=radio] {
+            display: none;
+       }
+        .card {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+            background:url("https://image.freepik.com/free-photo/abstract-pastel-brushstroke-white_53876-124521.jpg");
+
+       }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            max-height: 600px;
+            height: 100%;
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+       }
+        .cards {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+       }
+ 
+        #item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+            transform: translatex(-40%) scale(0.8);
+            opacity: 0.4;
+            z-index: 0;
+       }
+        #item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+            transform: translatex(40%) scale(0.8);
+            opacity: 0.4;
+            z-index: 0;
+       }
+        #item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+            transform: translatex(0) scale(1);
+            opacity: 1;
+            z-index: 1;
+       }
+        #item-1:checked ~ .cards #song-1 img, #item-2:checked ~ .cards #song-2 img, #item-3:checked ~ .cards #song-3 img {
+            box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+       }
+
+        .info-area {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 30px;
+            transition: transform 0.4s ease-in;
+       }
+        #item-2:checked ~ .player #test {
+            transform: translateY(0);
+       }
+        #item-2:checked ~ .player #test {
+            transform: translateY(-40px);
+       }
+        #item-3:checked ~ .player #test {
+            transform: translateY(-80px);
+       }
+
+        #playlist1, #playlist2, #playlist3 {
+                display: flex; 
+                margin-left: auto; 
+                margin-right:auto
+        }
+        
+     </style>
 </head>
 
 <body>
-    
+    <br><br><br>
+
+
     <!-- playlist recommendations -->
-    <div class="container">
-        
-        <h1>Spotify playlists recommended for you....</h1>
+    <div id="spotify">
+        <div class="playlist">
+            <h3 class="title">Spotify playlists recommended for you!</h1>
+
+            <!-- songs -->
+            <div class="container-lg-12" style="margin-bottom: 200px;">
+                <input type="radio" name="slider" id="item-1" checked>
+                <input type="radio" name="slider" id="item-2">
+                <input type="radio" name="slider" id="item-3">
+
+
+                <div id="cards" class="cards">
+                    <label class="card" for="item-1" id="song-1">
+                        <iframe id="playlist1" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </label>
+
+                    <label class="card" for="item-2" id="song-2">
+                        <iframe id="playlist2" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </label>
+
+                    <label class="card" for="item-3" id="song-3">
+                        <iframe id="playlist3" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </label>
+
+
+                </div>
+                
+
+            </div> <!-- close playlist carousell container -->
+
+        </div> <!-- close spotify container-->
+    </div> <!-- close div spotify-->
+
+    <script>
+        /* $('input').on('change', function() {
+            $('body').toggleClass('gradient2');
+        });*/
+
+        var playlist_arr = [
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWYBO1MoTDhZI",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWUAZoWydCivZ",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX1IeqVkK7Ebc",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2QWdoTGeQgx",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DXa1BeMIGX5Du",
+        "https://open.spotify.com/embed/playlist/1XRPDjvRdNh8cnDB0UlVYS",
+        "https://open.spotify.com/embed/playlist/5TTmUXMKK07ZuQ4RCBEwO4",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWTx0xog3gN3q",
+        "https://open.spotify.com/embed/playlist/2rN3mSrzUcgjlj1TcEDTX7",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWZCkamcYMQkz",
+        "https://open.spotify.com/embed/playlist/4uZH8OYaHg05IQpHVkyXGw",
+        "https://open.spotify.com/embed/playlist/7J0ssQcMWpjaR5R59eESWP",
+        "https://open.spotify.com/embed/playlist/3Di88mvYplBtkDBIzGLiiM",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX9XIFQuFvzM4",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRvPx3nttRN",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX18vEkgMAyAR",
+        ];
 
 
 
+        var nums = [];
+        for (let i in playlist_arr) {
+            nums.push(i);
+        }
+        console.log(nums); /* ['0', '1', '2', '3', '4', '5', '6', '7', '8'] */
+
+        var rand_playlist_index = [];
+        j = nums.length;
+        k = 0;
+        while (j--) {
+            k = Math.floor(Math.random() * (j+1));
+            rand_playlist_index.push(nums[k]);
+            nums.splice(k,1);
+        }
+        console.log(rand_playlist_index); 
+
+        var rand_playlist = [];
+        for (let index of rand_playlist_index) {
+            rand_playlist.push(playlist_arr[index])
+        }
+        console.log(rand_playlist);
 
 
-
-
-
-    </div>
-
+        document.getElementById('playlist1').src = rand_playlist[0];
+        document.getElementById('playlist2').src = rand_playlist[1];
+        document.getElementById('playlist3').src = rand_playlist[2];
+              
+    </script>
 
 
 
@@ -92,5 +285,26 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="js/bootstrap.min.js"></script> 
     <!-- Bootstrap framework -->
+
+    
 </body>
 </html>
+
+
+
+<!-- playlist -->
+
+<!-- when POSITIVE -->
+<!-- https://open.spotify.com/playlist/37i9dQZF1DWYBO1MoTDhZI?si=1bb4dc554f55422e -->
+<!-- https://open.spotify.com/playlist/37i9dQZF1DWUAZoWydCivZ?si=0e3f21284e1b4ec6 -->
+<!-- https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC?si=df1015554fc44531 -->
+
+<!-- when NEUTRAL -->
+<!-- https://open.spotify.com/playlist/37i9dQZF1DX1IeqVkK7Ebc?si=201d9e2dec7c40b6 -->
+<!-- https://open.spotify.com/playlist/37i9dQZF1DX2QWdoTGeQgx?si=d92c6d7c6bb943bf -->
+<!--  -->
+
+<!-- when NEGATIVE -->
+<!-- https://open.spotify.com/playlist/1XRPDjvRdNh8cnDB0UlVYS?si=ed7499ea40864199 -->
+<!-- https://open.spotify.com/playlist/5TTmUXMKK07ZuQ4RCBEwO4?si=524179c13f4b47a9 -->
+<!-- https://open.spotify.com/playlist/37i9dQZF1DWTx0xog3gN3q?si=96f1f229de69456b -->
