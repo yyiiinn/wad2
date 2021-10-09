@@ -161,6 +161,9 @@
   var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
   var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   var day = n.getDay() - 1
+  if(day == -1){
+    day = dayArr.length - 1;
+  }
   m = monthArr[m];
   document.getElementById("date").innerHTML += d + " " + m + " " + y;
   document.getElementById("day").innerHTML += dayArr[day];
