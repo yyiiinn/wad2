@@ -300,23 +300,23 @@ allowPointSelect: false,
   series: [{
       data: [10],
       name: "Very Stress",
-      color:"orangered"
+      color:"darkblue"
   }, {
       data: [20],
       name: 'Stress',
-      color:"goldenrod"
+      color:"#4f88d1"
   }, {
       data: [30],
       name: 'A little Stress',
-      color:"gold"
+      color:"#6ec8ff"
   }, {
     data: [30],
     name: 'Feels Good',
-    color:"yellowgreen"
+    color:"#a6ddff"
 }, {
   data: [30],
   name: 'Relaxed',
-  color:"lightseagreen"
+  color:"#bae8ff"
  
 }],
   
@@ -388,26 +388,26 @@ allowPointSelect: false,
   series: [{
       data: [10],
       name: "Furious",
-      color:"orangered"
+      color:"darkred"
   }, {
       data: [20],
       name: 'Angry',
-      color:"goldenrod"
+      color:"#da413d"
   }, {
       data: [30],
       name: 'Cross',
-      color:"gold"
+      color:"#ff8575"
   }, {
     data: [30],
     name: 'Neutral',
-    color:"yellowgreen"
+    color:"#ffbab0"
 }, {
   data: [30],
   name: 'Calm',
-  color:"lightseagreen"
+  color:"#f7d2cd"
  
 }],
-  
+ 
   responsive: {
       rules: [{
           condition: {
