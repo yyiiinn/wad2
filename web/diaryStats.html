@@ -26,6 +26,8 @@
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/datepicker.css" rel="stylesheet">
     <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
     
 	
     <!-- Script -->
@@ -224,9 +226,9 @@
   border-color: #cd4dcc; }
 
 .event-date {
-  border-color: #7e0cf5;
-  background: #7e0cf5;
-  color: #fff; }
+  border-color: lightgray;
+  background: #ededed;
+  color: black; }
 
 .active-date {
   background: #cd4dcc;
@@ -350,6 +352,41 @@
       </div>
   </div>
   <br><br><br>
+  <div class="row">
+    <div class="form-inline form-group-lg form-group col-md-4" style="width:100%;">
+      <label for="typeSelect">View: </label> 
+        <select id="typeSelect">
+        <option value="overview">Overview</option>
+        <option value="detail">In Detail</option>
+        </select> 
+    </div>
+    <div class="form-inline form-group-lg form-group col-md-4" style="width:100%;">
+      <label for="yearSelect" class="yearHide">Year: </label> 
+        <select id="yearSelect" class="yearHide">
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        </select> 
+    </div>
+    <div class="form-inline form-group-lg form-group col-md-4" style="width:100%;">
+      <label for="monthSelect" class="monthHide">Month: </label> 
+        <select id="monthSelect" class="monthHide">
+        <option value="jan">January</option>
+        <option value="feb">February</option>
+        <option value="mar">March</option>
+        <option value="apr">April</option>
+        <option value="may">May</option>
+        <option value="jun">June</option>
+        <option value="jul">July</option>
+        <option value="aug">August</option>
+        <option value="sep">September</option>
+        <option value="oct">October</option>
+        <option value="nov">November</option>
+        <option value="dec">December</option>       
+        </select> 
+    </div>
+  </div><br>
       <h3 style="text-align:center;">Overview</h3>
       <div class="row">
       <div class="col-md-4">
@@ -389,7 +426,7 @@
 </div>
 </div>
 </div>
-          </div>
+</div>
 		    </div>
         </div>    
     </div>
@@ -399,8 +436,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
 <script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
 <script src="js/diaryStats.js"></script>
+<script>
+  $('select').selectpicker();
+//   $('#typeSelect').on('change', function() {
+//   selectBoxVal = $(this).val();
+//   var id = $(this).val();
+//   if(id == "detail"){
+//     $('#yearSelect').attr("disabled", false);
+//     $('#monthSelect').attr("disabled", false);
+//   }
+
+
+// });
+
+$(document).ready(function(){
+    var mySelectBoxVal = localStorage.getItem("mySelectBoxVal");
+    if (mySelectBoxVal !== '') {
+        $('#typeSelect').val(mySelectBoxVal).attr('selected', true).change();
+        if(mySelectBoxVal == "detail"){
+          $('.yearHide').attr("style", "display:inline");
+          $('.monthHide').attr("style", "display:inline");
+        }
+        else{
+          $('.yearHide').attr("style", "display:none");
+          $('.monthHide').attr("style", "display:none");
+        }
+    }
+    else{
+      $('#typeSelect').val('overview').attr('selected', true).change();
+      $('.yearHide').attr("style", "display:none");
+      $('.monthHide').attr("style", "display:none");
+      mySelectBoxVal =  $('#typeSelect').val();
+    }
+
+    $("#typeSelect").on('change',function() {
+        console.log(mySelectBoxVal + 'f');
+        selectBoxVal = $('#typeSelect').val();
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("mySelectBoxVal", selectBoxVal);
+        } else {
+            alert('Sorry! No Web Storage support..');
+        }
+        location.reload();
+    });
+});
+</script>

@@ -195,12 +195,12 @@ function show_events(events, month, day) {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
             var event_card = $("<br><div class='event-card'></div>");
-            var hours = $("<div class='event-name'> Hours Slept: "+events[i]["hours"]+"</div>");
-            var stress = $("<div class='event-name'> Stress Level: "+events[i]["stress"]+"</div>");
-            var anxiety = $("<div class='event-name'> Anxiety Level: "+events[i]["anxiety"]+"</div>");
-            var feeling = $("<div class='event-name'> Feeling: "+events[i]["feeling"]+"</div>");
-            var word = $("<div class='event-name'> Word that represents the day: "+events[i]["word"]+"</div>");
-            var thoughts = $("<div class='event-name'> Thoughts for the day: "+events[i]["thoughts"]+"</div>");
+            var hours = $("<div class='event-name'> Hours Slept: <strong> "+events[i]["hours"]+" hours</strong></div><br>");
+            var stress = $("<div class='event-name'> Stress Level: <strong> "+events[i]["stress"]+"</strong></div><br>");
+            var anxiety = $("<div class='event-name'> Anxiety Level: <strong> "+events[i]["anxiety"]+"</strong></div><br>");
+            var feeling = $("<div class='event-name'> Feeling: <strong> "+events[i]["feeling"]+"</strong></div><br>");
+            var word = $("<div class='event-name'> Word that represents the day: <strong> "+events[i]["word"]+"</strong></div><br>");
+            var thoughts = $("<div class='event-name' style='max-height:200px;overflow-y:scroll;'> Thoughts for the day: <br><strong> "+events[i]["thoughts"]+"</strong><br></div>");
             // if(events[i]["cancelled"]===true) {
             //     $(event_card).css({
             //         "border-left": "10px solid #FF1744"
