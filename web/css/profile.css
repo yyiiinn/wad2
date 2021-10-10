@@ -916,7 +916,7 @@
     border-bottom-left-radius: 0;
   }
   
-  .nav {
+  /* .nav {
     display: flex;
     margin-bottom: 0;
     padding-left: 0;
@@ -1010,7 +1010,7 @@
   .navbar-dark .navbar-nav .nav-link:hover,
   .navbar-dark .navbar-nav .nav-link:focus {
     color: rgba(255, 255, 255, .65);
-  }
+  } */
   
   .card {
     position: relative;
@@ -1360,9 +1360,9 @@
       min-width: 992px !important;
     }
   
-    .navbar {
+    /* .navbar {
       display: none;
-    }
+    } */
   }
   
   figcaption,
@@ -1836,7 +1836,7 @@
     }
   }
   
-  .nav-link {
+  /* .nav-link {
     color: #525f7f;
   }
   
@@ -1891,10 +1891,10 @@
   
   .navbar-search-dark .focused .input-group {
     border-color: rgba(255, 255, 255, .9);
-  }
+  } */
   
   @media (min-width: 768px) {
-    .navbar .dropdown-menu {
+    /* .navbar .dropdown-menu {
       margin: 0;
       pointer-events: none;
       opacity: 0;
@@ -1918,9 +1918,9 @@
     .navbar .dropdown-menu-right:before {
       right: 20px;
       left: auto;
-    }
+    } */
   
-    @keyframes show-navbar-dropdown {
+    /* @keyframes show-navbar-dropdown {
       0% {
         transition: visibility .25s, opacity .25s, transform .25s;
         transform: translate(0, 10px) perspective(200px) rotateX(-2deg);
@@ -1943,10 +1943,10 @@
         opacity: 0;
       }
     }
-  }
+  } */
   
   @media (max-width: 767.98px) {
-    .navbar-nav .nav-link {
+    /* .navbar-nav .nav-link {
       padding: .625rem 0;
       color: #172b4d !important;
     }
@@ -1954,7 +1954,7 @@
     .navbar-nav .dropdown-menu {
       min-width: auto;
       box-shadow: none;
-    }
+    } */
   }
   
   @keyframes show-navbar-collapse {
@@ -1970,7 +1970,7 @@
     }
   }
   
-  @keyframes hide-navbar-collapse {
+  /* @keyframes hide-navbar-collapse {
     from {
       transform: scale(1);
       transform-origin: 100% 0;
@@ -1981,7 +1981,7 @@
       transform: scale(.95);
       opacity: 0;
     }
-  }
+  } */
   
   .progress {
     overflow: hidden;
@@ -2027,7 +2027,8 @@
       margin-bottom: 10px;
     }
   }
+}
   
-  #navbar .navbar {
+  /* #navbar .navbar {
     margin-bottom: 20px;
-  }
+  } */
