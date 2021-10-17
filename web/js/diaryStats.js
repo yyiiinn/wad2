@@ -134,8 +134,8 @@ inactive: {
 });
 
 $(function () {
-  var feelings = ["angry", "Angry", "Pissed", "Happy", "happy", "Glad", "Neutral", "Normal"];
-  var color = ['#e39898', '#e39898', '#e39898', "#a5e398", "#a5e398", "#a5e398", "#c9c8c5", "#c9c8c5"];
+  var feelings = ["angry", "Angry", "Pissed", "Happy", "happy", "Glad", "relieved", "Neutral", "Normal", "upset", "Upset", "demoralised"];
+  var color = ['#f7533b', '#f7533b', '#f7533b', "#42a371", "#42a371", "#e7c9b2", "#e7c9b2", "#afb1ae", "#afb1ae", "#4a4f72", "#4a4f72", "#41989c"];
   var counter = 0;
     data = Highcharts.reduce(feelings, function (arr, word) {
           var obj = Highcharts.find(arr, function (obj) {
@@ -311,7 +311,7 @@ allowPointSelect: false,
       color:"#6ec8ff"
   }, {
     data: [30],
-    name: 'Feels Good',
+    name: 'Feeling Good',
     color:"#a6ddff"
 }, {
   data: [30],

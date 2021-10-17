@@ -142,9 +142,14 @@
             </div>
         <br>
             <label for="thoughts" style="color: black;">Pen down your thoughts...</label>
-            <textarea placeholder="How's your day ? . . ." class="form-control" id="thoughts" rows="5"></textarea>
+            <textarea placeholder="How's your day ? 😊" class="form-control" id="thoughts" rows="5"></textarea>
             <br><br>
-            <button type="submit" class="btn btn-primary" style="width:100%;">SAVE MY DIARY</button>
+
+            <button onclick="sptfy_btn()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the button below for some good music." style="width:100%;">SAVE MY DIARY</button>
+
+            <div id="spotify_btn" style="display: flex; justify-content:center;">
+            </div>
+
           </div>
         </form>
     </div>
@@ -168,4 +173,23 @@
   document.getElementById("date").innerHTML += d + " " + m + " " + y;
   document.getElementById("day").innerHTML += dayArr[day];
  $
+</script>
+
+<!-- spotify pop-up botton -->
+<script>
+  function sptfy_btn() {
+    // console.log(event.target);
+    var spotify_btn = document.getElementById('spotify_btn');
+    spotify_btn.innerHTML = 
+    "<a href='spotify.html'>" +
+      "<img src='images/spotify-button.png' style='width: 300px; margin-top: 20px;'>" +
+    "</a>";
+  }
+</script>
+
+<!-- pop-up -->
+<script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
 </script>
