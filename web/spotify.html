@@ -68,20 +68,7 @@
      </script>
 
      <style>
-        * {
-            box-sizing: border-box;
-       }
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-       }
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 10px;
             font-family: 'DM Sans', sans-serif;
             /* transition: background 0.4s ease-in; */
             
@@ -94,109 +81,54 @@
        }
 
        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        0% {
+            background-position: 0% 50%;
         }
-        
-
-        input[type=radio] {
-            display: none;
-       }
-        .card {
-            position: absolute;
-            width: 100%;
-            height: auto;
-            left: 0;
-            right: 0;
-            margin: auto;
-            transition: transform 0.4s ease;
-            cursor: pointer;
-            background-color: rgb(22, 22, 22);
-       }
-
-       /*background:url("https://image.freepik.com/free-photo/abstract-pastel-brushstroke-white_53876-124521.jpg");*/
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            max-height: 600px;
-            height: 100%;
-            transform-style: preserve-3d;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-       }
-        .cards {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            margin-bottom: 20px;
-       }
- 
-        #item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
-            transform: translatex(-40%) scale(0.8);
-            opacity: 0.4;
-            z-index: 0;
-       }
-        #item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
-            transform: translatex(40%) scale(0.8);
-            opacity: 0.4;
-            z-index: 0;
-       }
-        #item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
-            transform: translatex(0) scale(1);
-            opacity: 1;
-            z-index: 1;
-       }
-        #item-1:checked ~ .cards #song-1 img, #item-2:checked ~ .cards #song-2 img, #item-3:checked ~ .cards #song-3 img {
-            box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
-       }
-
-        .info-area {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 30px;
-            transition: transform 0.4s ease-in;
-       }
-        #item-2:checked ~ .player #test {
-            transform: translateY(0);
-       }
-        #item-2:checked ~ .player #test {
-            transform: translateY(-40px);
-       }
-        #item-3:checked ~ .player #test {
-            transform: translateY(-80px);
-       }
-
-        #playlist1, #playlist2, #playlist3 {
-                display: flex; 
-                margin-left: auto; 
-                margin-right:auto
+        50% {
+            background-position: 100% 50%;
         }
-        
+        100% {
+            background-position: 0% 50%;
+        }
+    }
      </style>
 </head>
 
 <body>
+
     <br><br><br>
 
-
     <!-- playlist recommendations -->
-    <div id="spotify">
-        <div class="playlist">
-            <h3 class="title">Spotify playlists recommended for you!</h1>
-
+    <div class="container">
+        <!-- <div class="playlist"> -->
+            <div class="row">
+                <h3 class="title text-center mt-5">
+                    Spotify Playlists recommended for you!
+                </h3>
+            </div>
+            
+        
             <!-- songs -->
-            <div class="container-lg-12" style="margin-bottom: 200px;">
+        
+            <div class="row">
+
+                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                    <iframe id="playlist1" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                    <iframe id="playlist2" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                    <iframe id="playlist3" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+            </div>
+
+
+  
+            <!-- <div class="container" style="margin-bottom: 200px;">
                 <input type="radio" name="slider" id="item-1" checked>
                 <input type="radio" name="slider" id="item-2">
                 <input type="radio" name="slider" id="item-3">
@@ -214,19 +146,17 @@
                     <label class="card" for="item-3" id="song-3">
                         <iframe id="playlist3" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </label>
-
-                </div>
+                </div> -->
                 
-            </div> <!-- close playlist carousell container -->
+            </div> 
 
-        </div> <!-- close spotify container-->
-        
-    </div> <!-- close div spotify-->
+        </div> 
+
+    </div> 
+
+    
 
     <script>
-        /* $('input').on('change', function() {
-            $('body').toggleClass('gradient2');
-        });*/
 
         var playlist_arr = [
         "https://open.spotify.com/embed/playlist/37i9dQZF1DWYBO1MoTDhZI",

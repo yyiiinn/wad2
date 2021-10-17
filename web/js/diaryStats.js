@@ -5,7 +5,7 @@ $(function () {
   },credits: {
      enabled: false
 },
-        colors: ['#a5e398', '#f5f5f5'],
+        colors: ['#42a371', '#f5f5f5'],
         title: {
             text: '50%',
             verticalAlign: 'middle'
@@ -50,7 +50,7 @@ $(function () {
   },credits: {
      enabled: false
 },
-        colors: ['#c9c8c5', '#f5f5f5'],
+        colors: ['#afb1ae', '#f5f5f5'],
         title: {
             text: '25%',
             verticalAlign: 'middle'
@@ -95,7 +95,7 @@ $(function () {
   },credits: {
      enabled: false
 },
-        colors: ['#e39898', '#f5f5f5'],
+        colors: ['#f7533b', '#f5f5f5'],
         title: {
             text: '25%',
             verticalAlign: 'middle'
@@ -134,8 +134,8 @@ inactive: {
 });
 
 $(function () {
-  var feelings = ["angry", "Angry", "Pissed", "Happy", "happy", "Glad", "relieved", "Neutral", "Normal", "upset", "Upset", "demoralised"];
-  var color = ['#f7533b', '#f7533b', '#f7533b', "#42a371", "#42a371", "#e7c9b2", "#e7c9b2", "#afb1ae", "#afb1ae", "#4a4f72", "#4a4f72", "#41989c"];
+  var feelings = ["angry", "Angry", "Pissed", "doubtful", "Happy", "happy", "Neutral", "Normal", "Normal", "indifferent", "Excited", "grateful"];
+  var color = ['#f7533b', '#f7533b', '#f7533b', '#f7533b', "#42a371", "#42a371", "#afb1ae", "#afb1ae", "#afb1ae", "#afb1ae", "#42a371", "#42a371"];
   var counter = 0;
     data = Highcharts.reduce(feelings, function (arr, word) {
           var obj = Highcharts.find(arr, function (obj) {
