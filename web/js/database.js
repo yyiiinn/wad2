@@ -2,6 +2,7 @@
 var firebaseConfig = {
     apiKey: "AIzaSyDdAd22NyJbxcmvuXV7ZK8CveZxcNFhSlA",
     authDomain: "is216-wad2-countonme.firebaseapp.com",
+    databaseURL: "https://is216-wad2-countonme-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "is216-wad2-countonme",
     storageBucket: "is216-wad2-countonme.appspot.com",
     messagingSenderId: "809642846340",
