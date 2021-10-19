@@ -30,7 +30,7 @@
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Count On Me - Spotify Playlist Recommendation</title>
+    <title>Count On Me - Spotify Podcasts Recommendation</title>
     <link rel="icon" href="images/hand_heart.png">
 
     <!-- Font Icon -->
@@ -103,36 +103,38 @@
         <!-- <div class="playlist"> -->
             <div class="row">
                 <h3 class="title text-center mt-5">
-                    Spotify Playlists recommended for you!
+                    Spotify Podcasts recommended for you!
                 </h3>
-     
             </div>
             
         
             <!-- songs -->
         
+            <div class="row" style="display:block;">
+
+                <div class="col-lg mt-4 d-flex justify-content-center">
+                    <iframe id="podcast1" width="370" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+
+
             <div class="row">
-
-                <div class="col-lg-4 mt-3 d-flex justify-content-center">
-                    <iframe id="playlist1" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <div class="col-lg mt-4 d-flex justify-content-center">
+                    <iframe id="podcast2" width="370" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
+            </div>
 
-                <div class="col-lg-4 mt-3 d-flex justify-content-center">
-                    <iframe id="playlist2" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <div class="row">
+                <div class="col-lg mt-4 d-flex justify-content-center">
+                    <iframe id="podcast3" width="370" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
-
-                <div class="col-lg-4 mt-3 d-flex justify-content-center">
-                    <iframe id="playlist3" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                </div>
-                
             </div> 
 
             <div class="row mt-3" >
-                <a href="podcast.html"  class="d-flex justify-content-center mb-3"> 
-                    <img src="images/spotify_pc.PNG" style="width: 400px; border-radius:30px">
+                <a href="spotify.html"  class="d-flex justify-content-center mb-3"> 
+                    <img src="images/spotify_btn.PNG" style="width: 400px; border-radius:30px">
                 </a>
             </div>
-            
 
         </div> 
 
@@ -142,53 +144,54 @@
 
     <script>
 
-        var playlist_arr = [
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWYBO1MoTDhZI",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWUAZoWydCivZ",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX1IeqVkK7Ebc",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2QWdoTGeQgx",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DXa1BeMIGX5Du",
-        "https://open.spotify.com/embed/playlist/1XRPDjvRdNh8cnDB0UlVYS",
-        "https://open.spotify.com/embed/playlist/5TTmUXMKK07ZuQ4RCBEwO4",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWTx0xog3gN3q",
-        "https://open.spotify.com/embed/playlist/2rN3mSrzUcgjlj1TcEDTX7",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWZCkamcYMQkz",
-        "https://open.spotify.com/embed/playlist/7AZuDiVAVNfBQCI1cnUfMX",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWU0ScTcjJBdj",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2TRYkJECvfC",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX9XIFQuFvzM4",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRvPx3nttRN",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX18vEkgMAyAR",
+        var podcast_arr = [
+        "https://open.spotify.com/embed/episode/4RsYuSnNylFuoUaCKEFhhZ",
+        "https://open.spotify.com/embed/episode/3IDamoQt4WnqR4nazlSfdX",
+        "https://open.spotify.com/embed/episode/1LuZ78en0Z6eVqVRHYZQ9s",
+        "https://open.spotify.com/embed/episode/1dfB31HWqnzxCNSUarH1NH",
+        "https://open.spotify.com/embed/episode/6HU0XgFnRt1OkytQKK0upT",
+        "https://open.spotify.com/embed/episode/3L2rJ0mkeKrwbCg6IWhNIn",
+        "https://open.spotify.com/embed/episode/7mlIffdaPdlFE9nykrrYyc",
+        "https://open.spotify.com/embed/episode/5DScJ5FQhLPl926iPuA1y0",
+        "https://open.spotify.com/embed/episode/2P89lfLWA4m9pV3vwt0lpx",
+        "https://open.spotify.com/embed/episode/09FvBfDvnV298BRmTUCrPQ?theme=0",
+        "https://open.spotify.com/embed/episode/50DWn40smS7ptrG6DMvWo1?theme=0",
+        "https://open.spotify.com/embed/episode/4SS2Yh0ToiOVtcVlb6p4iR?theme=0",
+        "https://open.spotify.com/embed/episode/4XdklHAsmZ7WLM4lkBjnwd?theme=0",
+        "https://open.spotify.com/embed/episode/3UDRcpNkZsLQeRmAIFEITX?theme=0",
+        "https://open.spotify.com/embed/episode/6cQxS3znOqJAI8G2DZdvpB?theme=0",
+        "https://open.spotify.com/embed/episode/0V53rtWTTtVFW0mxneyKYM?theme=0",
+        "https://open.spotify.com/embed/episode/50K0TxXDBXyTAXsIVo51zv?theme=0",
         ];
 
 
+
         var nums = [];
-        for (let i in playlist_arr) {
+        for (let i in podcast_arr) {
             nums.push(i);
         }
         console.log(nums); /* ['0', '1', '2', '3', '4', '5', '6', '7', '8'] */
 
-        var rand_playlist_index = [];
+        var rand_podcast_index = [];
         j = nums.length;
         k = 0;
         while (j--) {
             k = Math.floor(Math.random() * (j+1));
-            rand_playlist_index.push(nums[k]);
+            rand_podcast_index.push(nums[k]);
             nums.splice(k,1);
         }
-        console.log(rand_playlist_index); 
+        console.log(rand_podcast_index); 
 
-        var rand_playlist = [];
-        for (let index of rand_playlist_index) {
-            rand_playlist.push(playlist_arr[index])
+        var rand_podcast = [];
+        for (let index of rand_podcast_index) {
+            rand_podcast.push(podcast_arr[index])
         }
-        console.log(rand_playlist);
+        console.log(rand_podcast);
 
 
-        document.getElementById('playlist1').src = rand_playlist[0];
-        document.getElementById('playlist2').src = rand_playlist[1];
-        document.getElementById('playlist3').src = rand_playlist[2];
+        document.getElementById('podcast1').src = rand_podcast[0];
+        document.getElementById('podcast2').src = rand_podcast[1];
+        document.getElementById('podcast3').src = rand_podcast[2];
 
      
     </script>
