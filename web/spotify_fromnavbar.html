@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services.">
+    <meta name="author" content="Inovatik">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Bundled Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
+
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>Count On Me - Spotify Playlist Recommendation</title>
+    <link rel="icon" href="images/hand_heart.png">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	<link href="css/magnific-popup.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
+	
+	<!-- Favicon  -->
+    </head>
+    <body data-spy="scroll" data-target=".fixed-top">
+        
+    <!-- Preloader -->
+	<!-- <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div> -->
+    <!-- end of preloader -->
+    
+     <!-- navbar -->
+     <div id="nav-placeholder"></div>
+     <script>
+         $(function(){
+         $("#nav-placeholder").load("navbar.html");
+         });
+     </script>
+
+     <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            /* transition: background 0.4s ease-in; */
+            
+            background: linear-gradient(-45deg, #8ee1ff, #fca3c3, #96fde5,  #fdb6a1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100%;
+
+            padding-bottom: 180px;
+       }
+
+       @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+     </style>
+</head>
+
+<body>
+
+    <br><br><br>
+
+    <!-- playlist recommendations -->
+    <div class="container">
+        <!-- <div class="playlist"> -->
+            <div class="row">
+                <h3 class="title text-center mt-5">
+                    Spotify Playlists for you!
+                </h3>
+     
+            </div>
+            
+        
+            <!-- songs -->
+        
+            <div class="row">
+
+                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                    <iframe id="playlist1" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                    <iframe id="playlist2" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                    <iframe id="playlist3" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                
+            </div> 
+
+             
+
+        </div> 
+
+    </div> 
+
+    
+
+    <script>
+
+        var playlist_arr = [
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWYBO1MoTDhZI",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWUAZoWydCivZ",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX1IeqVkK7Ebc",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2QWdoTGeQgx",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DXa1BeMIGX5Du",
+        "https://open.spotify.com/embed/playlist/1XRPDjvRdNh8cnDB0UlVYS",
+        "https://open.spotify.com/embed/playlist/5TTmUXMKK07ZuQ4RCBEwO4",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWTx0xog3gN3q",
+        "https://open.spotify.com/embed/playlist/2rN3mSrzUcgjlj1TcEDTX7",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWZCkamcYMQkz",
+        "https://open.spotify.com/embed/playlist/7AZuDiVAVNfBQCI1cnUfMX",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWU0ScTcjJBdj",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2TRYkJECvfC",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX9XIFQuFvzM4",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRvPx3nttRN",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX18vEkgMAyAR",
+        ];
+
+
+        var nums = [];
+        for (let i in playlist_arr) {
+            nums.push(i);
+        }
+        console.log(nums); /* ['0', '1', '2', '3', '4', '5', '6', '7', '8'] */
+
+        var rand_playlist_index = [];
+        j = nums.length;
+        k = 0;
+        while (j--) {
+            k = Math.floor(Math.random() * (j+1));
+            rand_playlist_index.push(nums[k]);
+            nums.splice(k,1);
+        }
+        console.log(rand_playlist_index); 
+
+        var rand_playlist = [];
+        for (let index of rand_playlist_index) {
+            rand_playlist.push(playlist_arr[index])
+        }
+        console.log(rand_playlist);
+
+
+        document.getElementById('playlist1').src = rand_playlist[0];
+        document.getElementById('playlist2').src = rand_playlist[1];
+        document.getElementById('playlist3').src = rand_playlist[2];
+
+     
+    </script>
+
+
+
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/bootstrap.min.js"></script> 
+    <!-- Bootstrap framework -->
+
+    
+</body>
+</html>
