@@ -9,8 +9,6 @@ $(document).ready(function() {
         var password = $("#pass").val();
         var re_pass = $("#re_pass").val();
 
-        var databaseRef = firebase.database().ref('users/');
-
         if (re_pass === password) {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(function(user) {
@@ -31,8 +29,9 @@ $(document).ready(function() {
                 // alert('the user is created successfully');
 
                 // redirect to homepage after successful registration
-                var url = "/wad2/web/homepage.html";    
-                $(location).attr('href',url);
+                // var url = "/wad2/web/homepage.html";    
+                // $(location).attr('href',url);  
+                window.location.href = "../web/homepage.html";  
             })
             .catch(function(err) {
                 if (err.code == "auth/invalid-email") {

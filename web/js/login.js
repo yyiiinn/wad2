@@ -12,8 +12,9 @@ $(document).ready(function() {
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function(user) {
             // redirect to homepage after successful login
-            var url = "/wad2/web/homepage.html";    
-            $(location).attr('href',url);
+            // var url = "/wad2/web/homepage.html";    
+            // $(location).attr('href',url);
+            window.location.href = "../web/homepage.html";  
         })
         .catch(function(err) {
             if (err.code == "auth/wrong-password") {
