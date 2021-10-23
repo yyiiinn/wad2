@@ -11,7 +11,7 @@ $(document).ready(function() {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function(user) {
-            // redirect to homepage after successful registration
+            // redirect to homepage after successful login
             var url = "/wad2/web/homepage.html";    
             $(location).attr('href',url);
         })
