@@ -1,6 +1,8 @@
 $(document).ready(function() {
     firebase.initializeApp(firebaseConfig);
     
+    const usersRef = firebase.firestore().collection("Users");
+
     $(".signup-form").on("submit", function(event) {
         event.preventDefault();
 
@@ -12,26 +14,13 @@ $(document).ready(function() {
         if (re_pass === password) {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(function(user) {
-                // find out how to do crud with firebase and create a database with user info
-                // user info includes name and email 
-                console.log(user);
-                // var uid = firebase.database().ref().child('users').push().key;
+                let data = {
+                    name: name
+                };
 
-                // var data = {
-                //     name: name,
-                //     email: email
-                // }
+                usersRef.doc(email).set(data);  // for this, i feel can use email as the uid so that we can identify user easily
 
-                // var updates = {};
-                // updates['/users/'] = data;
-                // firebase.database().ref().update(updates);
-
-                // alert('the user is created successfully');
-
-                // redirect to homepage after successful registration
-                // var url = "/wad2/web/homepage.html";    
-                // $(location).attr('href',url);  
-                window.location.href = "../web/homepage.html";  
+                $('#message').html('<p style="color:green;">You have successfully registered. Click <a href="../web/login.html">here</a> to login </p>').show();   
             })
             .catch(function(err) {
                 if (err.code == "auth/invalid-email") {
