@@ -69,12 +69,13 @@
             <br>
         <div class="form-group">
             <label for="date" style="color: black;">Diary Entry Date:</label> <br>
-            <input placeholder="Select date" type="date" class="form-control custom-control" style="padding-left: 13px; color:rgb(136, 136, 136);">
+            <input id="dateField" type="date" class="form-control custom-control" style="padding-left: 13px; color:rgb(136, 136, 136);">
         </div>
         <br>
           <div class="form-group">
             <label for="sleep" style="color: black;">How many hours have you slept for today?</label>
-            <div class="form-inline row form-group" style="width:100%;"><input type="number" placeholder="Enter a number between 0 to 24" class="form-control ml-3" id="sleep" min="0" max="24" style="width:80%;">
+            <div class="form-inline row form-group" style="width:100%;">
+              <input id="sleepField" type="number" placeholder="Enter a number between 0 to 24" class="form-control ml-3" id="sleep" min="0" max="24" style="width:80%;">
             <label for="sleep" style="display:content; padding-left:5px;">Hours</label></div>
           </div>
           <br>
@@ -183,7 +184,23 @@
   m = monthArr[m];
   document.getElementById("date").innerHTML += d + " " + m + " " + y;
   document.getElementById("day").innerHTML += dayArr[day];
- $
+  document.getElementById("dateField").max = new Date(new Date().getTime() + 86400000).toISOString().substring(0, 10);
+  $('#sleepField').on('keydown keyup change', function(e){
+    if ($(this).val() > 24 
+        && e.keyCode !== 46 // keycode for delete
+        && e.keyCode !== 8 // keycode for backspace
+       ) {
+       e.preventDefault();
+       $(this).val(24);
+    }
+    if ($(this).val() < 0 
+        && e.keyCode !== 46 // keycode for delete
+        && e.keyCode !== 8 // keycode for backspace
+       ) {
+       e.preventDefault();
+       $(this).val(0);
+    }
+});
 </script>
 
 <!-- spotify playlist & podcasts pop-up botton -->
