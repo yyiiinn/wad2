@@ -49,8 +49,8 @@ $(document).ready(function() {
 
 function submitEntry(){
     allFilled = true;
-    hoursSlept = $('#sleepField').val();
-    if(hoursSlept == ""){
+    hoursSlept = parseInt($('#sleepField').val());
+    if(isNaN(hoursSlept)){
       $('#sleepCheck').css("display", "block");
       allFilled = false;
     }
