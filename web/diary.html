@@ -4,28 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-	<meta property="og:site_name" content="" /> <!-- website name -->
-	<meta property="og:site" content="" /> <!-- website link -->
-	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
-	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
-	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
-	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
-	<meta property="og:type" content="article" />
-
     <!-- Website Title -->
     <title>Count On Me - Diary Entry</title>
     <link rel="icon" href="images/hand_heart.png">
-    
-    <!-- Styles -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/fontawesome-all.css" rel="stylesheet">
-    <link href="css/swiper.css" rel="stylesheet">
-	  <link href="css/magnific-popup.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet"> -->
-    
 	
     <!-- Script -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
@@ -68,65 +49,69 @@
           <div class="form-group">
             <br>
         <div class="form-group">
-            <label for="date" style="color: black;">Diary Entry Date:</label> <br>
+            <label for="date" style="color: black;">Diary Entry Date:</label> 
+            <label id="dateCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+            <br>
             <input id="dateField" type="date" class="form-control custom-control" style="padding-left: 13px; color:rgb(136, 136, 136);">
         </div>
         <br>
           <div class="form-group">
             <label for="sleep" style="color: black;">How many hours have you slept for today?</label>
+            <label id="sleepCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
             <div class="form-inline row form-group" style="width:100%;">
               <input id="sleepField" type="number" placeholder="Enter a number between 0 to 24" class="form-control ml-3" id="sleep" min="0" max="24" style="width:80%;">
             <label for="sleep" style="display:content; padding-left:5px;">Hours</label></div>
           </div>
           <br>
           <label for="stress" style="color: black;">Stress Tracker</label>
+          <label id="stressCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
           <div class="form-inline row form-group-lg" style="margin-left: 1px;">
               <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-                <input type="radio" id="relaxed" name="stress" class="custom-control-input">
+                <input type="radio" id="relaxed" value="Relaxed" name="stress" class="custom-control-input">
                 <label class="custom-control-label" for="relaxed" style='font-size:15px;color:white;background-color:#62c5ff;padding:3px;font-weight:normal;'>Relaxed</label>
               </div>
               <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-                <input type="radio" id="good" name="stress" class="custom-control-input">
+                <input type="radio" id="good" value="Feeling Good" name="stress" class="custom-control-input">
                 <label class="custom-control-label" for="good" style='font-size:15px;color:white;background-color:#2dafff;padding:3px;font-weight:normal;'>Feeling Good</label>
               </div>
               <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-                <input type="radio" id="little" name="stress" class="custom-control-input">
+                <input type="radio" id="little" value="A Little Stress" name="stress" class="custom-control-input">
                 <label class="custom-control-label" for="little" style='font-size:15px;color:white;background-color:#0098f7;padding:3px;font-weight:normal;'>A Little Stress</label>
               </div>
               <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-                <input type="radio" id="normal" name="stress" class="custom-control-input">
+                <input type="radio" id="normal" value="Stress" name="stress" class="custom-control-input">
                 <label class="custom-control-label" for="normal" style='font-size:15px;color:white;background-color:#3168b1;padding:3px;font-weight:normal;'>Stress</label>
               </div>
               <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-                <input type="radio" id="very" name="stress" class="custom-control-input">
+                <input type="radio" id="very" value="Very Stress" name="stress" class="custom-control-input">
                 <label class="custom-control-label" for="very" style='font-size:15px;color:white;background-color:darkblue;padding:3px;font-weight:normal;'>Very Stress</label>
               </div>
           </div>
           <br><br>
           <label for="stress" style="color: black;">Anxiety Tracker</label>
-          <div class="form-inline row form-group-lg" style="margin-left: 1px;">
+          <label id="anxietyCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+          <div class="form-inline row form-group-lg" id="anxietyBox" style="margin-left: 1px;">
             <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-              <input type="radio" id="calm" name="anxiety" class="custom-control-input">
+              <input type="radio" id="calm" value="Calm" name="anxiety" class="custom-control-input">
               <label class="custom-control-label" for="calm" style='font-size:15px;color:white;background-color:#ffaca1;padding:3px;font-weight:normal;'>Calm</label>
             </div>
             <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-              <input type="radio" id="neutral" name="anxiety" class="custom-control-input">
+              <input type="radio" id="neutral" value="Neutral" name="anxiety" class="custom-control-input">
               <label class="custom-control-label" for="neutral" style='font-size:15px;color:white;background-color:#ff8b79;padding:3px;font-weight:normal;'>Neutral</label>
             </div>
             <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-              <input type="radio" id="cross" name="anxiety" class="custom-control-input">
+              <input type="radio" id="cross" value="Cross" name="anxiety" class="custom-control-input">
               <label class="custom-control-label" for="cross" style='font-size:15px;color:white;background-color:#fd6450;padding:3px;font-weight:normal;'>Cross</label>
             </div>
             <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-              <input type="radio" id="angry" name="anxiety" class="custom-control-input">
+              <input type="radio" id="angry" value="Angry" name="anxiety" class="custom-control-input">
               <label class="custom-control-label" for="angry" style='font-size:15px;color:white;background-color:#d12721;padding:3px;font-weight:normal;'>Angry</label>
             </div>
             <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
-              <input type="radio" id="furious" name="anxiety" class="custom-control-input">
+              <input type="radio" id="furious" value="Furious" name="anxiety" class="custom-control-input">
               <label class="custom-control-label" for="furious" style='font-size:15px;color:white;background-color:rgb(128, 0, 0);padding:3px;font-weight:normal;'>Furious</label>
             </div>
-          </div>
-          </div>
+        </div>
           <br>
           <div class="form-group">
           <label for="feelingSelect" style="color: black;">How are you feeling today? </label> <br>
@@ -139,24 +124,27 @@
         <br>
              <div class="form-group">
               <label for="mood" style="color: black;">A word to represent your day...</label>
-              <input type="text" placeholder="Sad / Happy / Depressed / Excited . . ." class="form-control" id="mood" onkeydown="wordLimit()">
+              <label id="moodCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+              <input type="text" placeholder="Sad / Happy / Depressed / Excited . . ." class="form-control" id="moodField">
             </div>
         <br>
-            <label for="thoughts" style="color: black;">Pen down your thoughts...</label>
-            <textarea placeholder="How's your day ? 😊" class="form-control" id="thoughts" rows="5"></textarea>
+            <label for="thoughts" style="color: black;">(Optional) Pen down your thoughts...</label>
+            <textarea placeholder="How's your day ? 😊" class="form-control" id="thoughtsField" rows="5"></textarea>
             <br><br>
 
-            <button onclick="sptfy_btn()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the buttons below for some good music or soul-filling podcasts." style="width:100%;">SAVE MY DIARY</button>
+            <button onclick="submitEntry()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the buttons below for some good music or soul-filling podcasts." style="width:100%;">SAVE MY DIARY</button>
 
-            <div class="row">
+            <!-- <div class="row">
               <div id="spotify_btn" class="col-md d-flex justify-content-center">
               </div>
 
               <div id="podcast_btn" class="col-md d-flex justify-content-center">
               </div>
-            </div>
+            </div> -->
           </div>
         </form>
+    </div>
+    </div>
     </div>
     </body>
     </html>
@@ -170,41 +158,9 @@
 <script src="js/diaryEntry.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script type="text/JavaScript">
-  n = new Date();
-  y = n.getFullYear();
-  m = n.getMonth() + 1;
-  d = n.getDate();
-  var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
-  var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  var day = n.getDay() - 1
-  if(day == -1){
-    day = dayArr.length - 1;
-  }
-  m = monthArr[m];
-  document.getElementById("date").innerHTML += d + " " + m + " " + y;
-  document.getElementById("day").innerHTML += dayArr[day];
-  document.getElementById("dateField").max = new Date(new Date().getTime() + 86400000).toISOString().substring(0, 10);
-  $('#sleepField').on('keydown keyup change', function(e){
-    if ($(this).val() > 24 
-        && e.keyCode !== 46 // keycode for delete
-        && e.keyCode !== 8 // keycode for backspace
-       ) {
-       e.preventDefault();
-       $(this).val(24);
-    }
-    if ($(this).val() < 0 
-        && e.keyCode !== 46 // keycode for delete
-        && e.keyCode !== 8 // keycode for backspace
-       ) {
-       e.preventDefault();
-       $(this).val(0);
-    }
-});
-</script>
 
 <!-- spotify playlist & podcasts pop-up botton -->
-<script>
+<!-- <script>
   function sptfy_btn() {
     // console.log(event.target);
     var spotify_btn = document.getElementById('spotify_btn');
@@ -220,11 +176,11 @@
     "</a>";
   }
   
-</script>
+</script> -->
 
 <!-- pop-up -->
-<script>
+<!-- <script>
   $(function () {
     $('[data-toggle="popover"]').popover()
   })
-</script>
+</script> -->

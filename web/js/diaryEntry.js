@@ -1,63 +1,107 @@
+firebase.initializeApp(firebaseConfig);
+const usersRef = firebase.firestore().collection("Users")
+const diaryRefs = firebase.firestore().collection("Diary")
+
 $(document).ready(function() {
-    firebase.initializeApp(firebaseConfig);
-
-    const usersRef = firebase.firestore().collection("Users");
-    var datas = {}
-
-    //READ all docs in Users
-    usersRef
-    .onSnapshot((snapshot) => {
-        datas = snapshot.docs.map((doc) => ({
-            id: doc.id,             // will the id better if is using user's uid or auto generated id?
-            email: doc.data().email,
-        }));
-        console.log("READ results: " + datas);
-        for(var key in datas){
-            console.log("READ results: " + datas[key]["email"]);
-        }
-    });
-
-    //UPADTE
-    usersRef.onSnapshot((snapshot) =>{
-        usersRef.doc("vw4aO2dy70PI7Q38ZpZ6").update({
-            update: "testing"
-        });
-    })
-    
-    //CREATE
-    let data = {
-        email: "123@gmail.com",
-        test: "ajdsbvas",
-        hello: [1,2,3],
-        u: {1:"2", r:"3"}
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+    var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    var day = n.getDay() - 1
+    if(day == -1){
+      day = dayArr.length - 1;
     }
-    // usersRef.add(data);      generated ID
-    //usersRef.doc("uniqueID").set(data);     self defined ID
-
-
-    //DELETE A FIELD
-    usersRef.onSnapshot((snapshot) =>{
-        usersRef.doc("uniqueID").update({
-            test: null
-        });
-    })
-    // usersRef.update({       code doesn't work though
-    //     test: admin.firestore.FieldValue.delete()
-    // })
-
-
-    //DELETE A DOCUMENT
-    // usersRef.doc("uniqueID").delete();
-
-    
-    //QUERY
-    var test = usersRef.where("email", "==", "123@gmail.com").get()
-    .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => ({
-            id: doc.id,             // will the id better if is using user's uid or auto generated id?
-            email: doc.data().email,
-        }));
-    })
-    console.log("query result: ", data);
+    m = monthArr[m];
+    document.getElementById("date").innerHTML += d + " " + m + " " + y;
+    document.getElementById("day").innerHTML += dayArr[day];
+    document.getElementById("dateField").max = new Date(new Date().getTime() + 86400000).toISOString().substring(0, 10);
+    $('#sleepField').on('keydown keyup change', function(e){
+      if ($(this).val() > 24 
+          && e.keyCode !== 46 // keycode for delete
+          && e.keyCode !== 8 // keycode for backspace
+         ) {
+         e.preventDefault();
+         $(this).val(24);
+      }
+      if ($(this).val() < 0 
+          && e.keyCode !== 46 // keycode for delete
+          && e.keyCode !== 8 // keycode for backspace
+         ) {
+         e.preventDefault();
+         $(this).val(0);
+      }
+  });
+  
+  //prevent spacing
+  $('#moodField').on('keydown', function(e){
+      var firstChar = $("#moodField").val()
+       if(e.keyCode == 32 && firstChar == ""){
+         return false;
+       }
+       if(e.keyCode == 32){
+         return false;
+       }
+  });
 
 })
+
+function submitEntry(){
+    allFilled = true;
+    hoursSlept = $('#sleepField').val();
+    if(hoursSlept == ""){
+      $('#sleepCheck').css("display", "block");
+      allFilled = false;
+    }
+    else{
+      $('#sleepCheck').css("display", "none");
+    }
+    anxietyChecked = $('input[name="anxiety"]:checked').val();
+    if (anxietyChecked == undefined){
+      $('#anxietyCheck').css("display", "block");
+      allFilled = false;
+    }
+    else{
+      $('#anxietyCheck').css("display", "none");
+    }
+    stressChecked = $('input[name="stress"]:checked').val();
+    if (stressChecked == undefined){
+      $('#stressCheck').css("display", "block");
+      allFilled = false;
+    }
+    else{
+      $('#stressCheck').css("display", "none");
+    }
+    selectedMood = $('#feelingSelect').find(":selected").text();
+    thoughtsField = $('#thoughtsField').val();
+    moodField = $("#moodField").val();
+    if (moodField == ""){
+      $('#moodCheck').css("display", "block");
+      allFilled = false;
+    }
+    else{
+      $('#moodCheck').css("display", "none");
+    } 
+    var dateField = $('#dateField').val();
+    if (dateField == ""){
+      $('#dateCheck').css("display", "block");
+      allFilled = false;
+    }
+    else{
+      $('#dateCheck').css("display", "none");
+    } 
+    if(allFilled == true){  //also need to check if user is logged in 
+        let data = {
+          anxiety: anxietyChecked,
+          date: dateField,
+          feeling: selectedMood,
+          hoursSlept: hoursSlept,
+          stress: stressChecked,
+          thoughts: thoughtsField,
+          mood: moodField,
+          userID: "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2"
+      }
+      diaryRefs.add(data);
+    }
+  }

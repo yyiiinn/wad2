@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>Count On Me - Diary Entry</title>
+    <link rel="icon" href="images/hand_heart.png">
+	
+    <!-- Script -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
+
+
+    <!-- navbar -->
+    <div id="nav-placeholder"></div>
+    <script>
+        $(function(){
+        $("#nav-placeholder").load("navbar.html");
+        });
+    </script>
+</head>
+   
+    <!-- Diary -->
+    <body>
+    <br>
+    <div id="diary" class="filter">
+		<div class="container">
+        <div style="background-color:white;padding:25px;">
+            <div class="row">
+                <img class="mx-auto" style="max-width:200px;min-width:200px" src="https://cdn2.iconfinder.com/data/icons/greenline/512/check-512.png">
+            </div>
+            <div class="row">
+                <span class="mx-auto">Diary Entry for 26/10/2021 had been successfully added</span>
+            </div>
+            <div class="row">
+                <a class="mx-auto" style="color:blue;" href="diaryStats.html">View Your Diary</a> 
+            </div>
+            <br><br>
+            <div class="vstack gap-2 col-md-5 mx-auto">
+                We also recommend you to... 
+                <div id="spotify_btn" class="col-md d-flex justify-content-center">
+                    <a href='spotify.html'>
+                        <img src='images/spotify_btn.png' style='width: 450px; margin-top: 20px; border-radius:30px'>
+                    </a>
+                </div>
+                <div id="podcast_btn" class="col-md d-flex justify-content-center">
+                    <a href='podcast.html'>
+                        <img src='images/spotify_pc.png' style='width: 450px; margin-top: 20px; border-radius:30px'>
+                    </a>
+                </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>
+
+<!-- <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="js/database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- spotify playlist & podcasts pop-up botton -->
+<script>
+//   function sptfy_btn() {
+//     // console.log(event.target);
+//     var spotify_btn = document.getElementById('spotify_btn');
+//     spotify_btn.innerHTML = "<a href='spotify.html'>" +
+//       "<img src='images/spotify_btn.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
+//     "</a>";
+
+//     var podcast_btn = document.getElementById('podcast_btn');
+//     podcast_btn.innerHTML =  "<a href='podcast.html'>" +
+//       "<img src='images/spotify_pc.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
+//     "</a>";
+//   }
+  
+</script>
+
+<!-- pop-up -->
+<script>
+//   $(function () {
+//     $('[data-toggle="popover"]').popover()
+//   })
+</script>
