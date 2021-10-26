@@ -91,8 +91,7 @@ function submitEntry(){
     else{
       $('#dateCheck').css("display", "none");
     } 
-    if(allFilled == true){  //also need to check if user is logged in 
-        let data = {
+    let data = {   //also need to check if user is logged in 
           anxiety: anxietyChecked,
           date: dateField,
           feeling: selectedMood,
@@ -102,6 +101,33 @@ function submitEntry(){
           mood: moodField,
           userID: "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2"
       }
-      diaryRefs.add(data);
-    }
+      diaryRefs.add(data).then((result) => {
+        dArr = dateField.split("-");
+        date = dArr[2]+ "/" +dArr[1]+ "/" +dArr[0];
+        localStorage.setItem("dateField", date)
+        window.location.href = "../web/diarySuccess.html";  
+      }).catch((error) => {
+        alert("An Error Has Occured");
+    });
   }
+
+// async function getFromDB(dateField){
+//     var queryData = {}
+//     const PROMISE = new Promise((resolve) =>{
+//       let inDB = false;
+//       var test = diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
+//       .then((querySnapshot) => {
+//           queryData = querySnapshot.docs.map((doc) => ({
+//               date: doc.data().date
+//           }));
+//           console.log(queryData)
+//           for(var key in queryData){
+//             if(queryData[key]["date"] == dateField){
+//               inDB = true;
+//             }
+//           }
+//           resolve(inDB)
+//       })
+//     })
+//   }
+

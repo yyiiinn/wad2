@@ -34,14 +34,14 @@
     <!-- Diary -->
     <body>
     <br>
-    <div id="diary" class="filter">
+    <div id="diarySuccess" class="filter">
 		<div class="container">
         <div style="background-color:white;padding:25px;">
             <div class="row">
                 <img class="mx-auto" style="max-width:200px;min-width:200px" src="https://cdn2.iconfinder.com/data/icons/greenline/512/check-512.png">
             </div>
             <div class="row">
-                <span class="mx-auto">Diary Entry for 26/10/2021 had been successfully added</span>
+                <span class="mx-auto" id="entryText"></span>
             </div>
             <div class="row">
                 <a class="mx-auto" style="color:blue;" href="diaryStats.html">View Your Diary</a> 
@@ -91,12 +91,21 @@
 //       "<img src='images/spotify_pc.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
 //     "</a>";
 //   }
-  
+date = localStorage.getItem("dateField");
+if(date == null){
+    $('#entryText').text(''); 
+}
+else{
+    diaryText = "Diary Entry for " + date + " has been successfully added"
+    $('#entryText').text(diaryText); 
+    window.localStorage.removeItem('dateField');
+}
+
 </script>
 
 <!-- pop-up -->
-<script>
-//   $(function () {
+<!-- <script> -->
+<!-- //   $(function () {
 //     $('[data-toggle="popover"]').popover()
-//   })
-</script>
+//   }) -->
+<!-- </script> -->

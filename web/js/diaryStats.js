@@ -1,10 +1,37 @@
+firebase.initializeApp(firebaseConfig);
+const usersRef = firebase.firestore().collection("Users")
+const diaryRefs = firebase.firestore().collection("Diary")
+
+
+async function getDiary(){
+    var diaryData;
+    var test = await diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
+    .then((querySnapshot) => {
+        diaryData = querySnapshot.docs.map((doc) => ({
+            id: doc.id,             // will the id better if is using user's uid or auto generated id?
+            anxiety: doc.data().anxiety,
+            date: doc.data().date,
+            feeling: doc.data().feeling,
+            hoursSlept: doc.data().hoursSlept,
+            mood: doc.data().mood,
+            stress: doc.data().stress,
+            thoughts: doc.data().thoughts,
+            userID: doc.data().userID
+        }));
+    })
+    return diaryData
+}
+
+
 $(function () {
-    $('#positivePercent').highcharts({
-      exporting: {
-    enabled: false
-  },credits: {
-     enabled: false
-},
+    getDiary().then(result => {
+        console.log(result) //db results
+            $('#positivePercent').highcharts({
+            exporting: {
+            enabled: false
+        },credits: {
+            enabled: false
+        },
         colors: ['#42a371', '#f5f5f5'],
         title: {
             text: '50%',
@@ -41,6 +68,7 @@ inactive: {
     },  
         
     });
+})
 });
 
 $(function () {
