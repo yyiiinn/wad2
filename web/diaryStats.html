@@ -381,19 +381,19 @@
       <div class="row">
       <div class="col-md-4">
         <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #42a371 !important;border:1px solid #42a371;">
-        <p>I feel <span style="color:#42a371;font-weight: bold !important;">Positive</span> in 150 out of 300 days...</p>
+        <p>I feel <span style="color:#42a371;font-weight: bold !important;">Positive</span><span id="positiveDays"></span></p>
         <div id="positivePercent" style="min-width: 100px;min-height: 100px;"></div> 
       </div>
     </div>
     <div class="col-md-4">
       <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #afb1ae !important;border:1px solid #afb1ae;">
-      <p>I feel <span style="color:#afb1ae;font-weight:bold!important;">Neutral</span> in 75 out of 300 days...</p>
+      <p>I feel <span style="color:#afb1ae;font-weight:bold!important;">Neutral</span><span id="neutralDays"></span></p>
       <div id="neutralPercent" style="min-width: 100px;min-height: 100px;"></div> 
       </div>
   </div>
   <div class="col-md-4">
     <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #f7533b !important;border:1px solid #f7533b;">
-    <p>I feel <span style="color:#f7533b;font-weight: bold!important;">Negative</span> in 75 out of 300 days...</p>
+    <p>I feel <span style="color:#f7533b;font-weight: bold!important;">Negative</span><span id="negativeDays"></span></p>
     <div id="negativePercent" style="min-width: 100px;min-height: 100px;"></div>
     </div> 
 </div>
@@ -438,6 +438,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
 <!-- Don't change the format for any other products. -->
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="js/database.js"></script>
 <script src="js/diaryStats.js"></script>
 <script>

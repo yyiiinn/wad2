@@ -5,7 +5,7 @@ const diaryRefs = firebase.firestore().collection("Diary")
 $(document).ready(function() {
     n = new Date();
     y = n.getFullYear();
-    m = n.getMonth() + 1;
+    m = n.getMonth();
     d = n.getDate();
     var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
     var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -32,9 +32,13 @@ $(document).ready(function() {
          e.preventDefault();
          $(this).val(0);
       }
+      if (charCode != 46 && charCode != 45 && charCode > 31
+        && (charCode < 48 || charCode > 57))
+         return false;
   });
   
-  //prevent spacing
+
+  //prevent spacing and number
   $('#moodField').on('keydown', function(e){
       var firstChar = $("#moodField").val()
        if(e.keyCode == 32 && firstChar == ""){
@@ -43,8 +47,14 @@ $(document).ready(function() {
        if(e.keyCode == 32){
          return false;
        }
+       var charCode = e.keyCode;
+       if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode == 189){
+          $(this).val($(this).val().substr(0, 1).toUpperCase() + $(this).val().substr(1));    
+          return true;
+       } 
+       else
+           return false;
   });
-
 })
 
 function submitEntry(){
@@ -82,6 +92,8 @@ function submitEntry(){
     }
     else{
       $('#moodCheck').css("display", "none");
+      moodField = moodField.toLowerCase()
+      moodField = moodField.charAt(0).toUpperCase() + moodField.slice(1)
     } 
     var dateField = $('#dateField').val();
     if (dateField == ""){

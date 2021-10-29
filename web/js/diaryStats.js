@@ -26,162 +26,249 @@ async function getDiary(){
 $(function () {
     getDiary().then(result => {
         console.log(result) //db results
-            $('#positivePercent').highcharts({
-            exporting: {
-            enabled: false
-        },credits: {
-            enabled: false
-        },
-        colors: ['#42a371', '#f5f5f5'],
-        title: {
-            text: '50%',
-            verticalAlign: 'middle'
-        },
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: false
-                },
-                size: 90,
-                borderWidth: 0,
-                renderTo: 'container'
+        posResult = []; 
+        negResult = [];
+        NeuResult = [];
+        moodArray = []
+        for(r of result){
+            moodArray.push(r.mood)
+            if (r.feeling == "Positive"){
+                posResult.push(r)
             }
-        },
+            else if(r.feeling == "Negative"){
+                negResult.push(r)
+            }
+            else if(r.feeling == "Neutral"){
+                NeuResult.push(r)
+            }
+        }
+        positiveChart(posResult, result.length)
+        negativeChart(negResult, result.length)
+        neutralChart(NeuResult, result.length)
+        callMonkeyLearn(moodArray)
+})
+});
+
+function positiveChart(results, totalDays){
+    resultDays = results.length
+    percent = (resultDays/totalDays) * 100
+    postivePercent = Math.round(percent * 100) / 100
+    restPercent = Math.round((100-postivePercent) * 100) / 100
+    restPercent = restPercent.toFixed(1)
+    document.getElementById("positiveDays").innerHTML = " in " + resultDays + " out of " + totalDays + " days..."
+    $('#positivePercent').highcharts({
+        exporting: {
+        enabled: false
+    },credits: {
+        enabled: false
+    },
+    colors: ['#42a371', '#f5f5f5'],
+    title: {
+        text: String(postivePercent) + "%",
+        verticalAlign: 'middle'
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: false
+            },
+            size: 90,
+            borderWidth: 0,
+            renderTo: 'container'
+        }
+    },
         series: [{
             type: 'pie',
             name: 'positive',
             innerSize: '90%',
-            data: [50,50],
+            data: JSON.parse("[" + postivePercent + "," + restPercent +"]"),
             states: {
-hover: {
-enabled: false, 
-lineWidth: 1,
-},
-inactive: {
+    hover: {
+    enabled: false, 
+    lineWidth: 1,
+    },
+    inactive: {
         opacity: 1
-      }
-}
+    }
+    }
         }],
-        tooltip: {
-        enabled: false,
-        animation: false,
-    },  
-        
-    });
-})
+    tooltip: {
+    enabled: false,
+    animation: false,
+},  
+    
 });
-
-$(function () {
-    $('#neutralPercent').highcharts({
-      exporting: {
-    enabled: false
-  },credits: {
-     enabled: false
-},
-        colors: ['#afb1ae', '#f5f5f5'],
-        title: {
-            text: '25%',
-            verticalAlign: 'middle'
-        },
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: false
-                },
-                size: 90,
-                borderWidth: 0,
-                renderTo: 'container'
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'neutral',
-            innerSize: '90%',
-            data: [25,75],
-            states: {
-hover: {
-enabled: false, 
-lineWidth: 1,
-},
-inactive: {
-        opacity: 1
-      }
 }
-        }],
-        tooltip: {
-        enabled: false,
-        animation: false,
-    },  
-        
-    });
-});
 
-$(function () {
+function negativeChart(results, totalDays){
+    resultDays = results.length
+    percent = (resultDays/totalDays) * 100
+    negativePercent = Math.round(percent * 100) / 100
+    restPercent = Math.round((100-negativePercent) * 100) / 100
+    restPercent = restPercent.toFixed(1)
+    document.getElementById("negativeDays").innerHTML = " in " + resultDays + " out of " + totalDays + " days..."
     $('#negativePercent').highcharts({
-      exporting: {
-    enabled: false
-  },credits: {
-     enabled: false
-},
-        colors: ['#f7533b', '#f5f5f5'],
-        title: {
-            text: '25%',
-            verticalAlign: 'middle'
-        },
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: false
-                },
-                size: 90,
-                borderWidth: 0,
-                renderTo: 'container'
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'negative',
-            innerSize: '90%',
-            data: [25,75],
-            states: {
-hover: {
-enabled: false, 
-lineWidth: 1,
-},
-inactive: {
-        opacity: 1
-      }
+        exporting: {
+      enabled: false
+    },credits: {
+       enabled: false
+  },
+          colors: ['#f7533b', '#f5f5f5'],
+          title: {
+              text: String(negativePercent) + "%",
+              verticalAlign: 'middle'
+          },
+          plotOptions: {
+              pie: {
+                  dataLabels: {
+                      enabled: false
+                  },
+                  size: 90,
+                  borderWidth: 0,
+                  renderTo: 'container'
+              }
+          },
+          series: [{
+              type: 'pie',
+              name: 'negative',
+              innerSize: '90%',
+              data: JSON.parse("[" + negativePercent + "," + restPercent +"]"),
+              states: {
+  hover: {
+  enabled: false, 
+  lineWidth: 1,
+  },
+  inactive: {
+          opacity: 1
+        }
+  }
+          }],
+          tooltip: {
+          enabled: false,
+          animation: false,
+      },  
+          
+      });
 }
-        }],
-        tooltip: {
-        enabled: false,
-        animation: false,
-    },  
-        
-    });
-});
 
-$(function () {
-  var feelings = ["angry", "Angry", "Pissed", "doubtful", "Happy", "happy", "Neutral", "Normal", "Normal", "indifferent", "Excited", "grateful"];
-  var color = ['#f7533b', '#f7533b', '#f7533b', '#f7533b', "#42a371", "#42a371", "#afb1ae", "#afb1ae", "#afb1ae", "#afb1ae", "#42a371", "#42a371"];
-  var counter = 0;
-    data = Highcharts.reduce(feelings, function (arr, word) {
-          var obj = Highcharts.find(arr, function (obj) {
-              return obj.name === word.charAt(0).toUpperCase() + word.slice(1);
-          });
-          if (obj) {
-              obj.weight += 1;
-          } else {
-              obj = {
-                  name: word.charAt(0).toUpperCase() + word.slice(1),
-                  weight: 1,
-                  color: color[counter]
-              };
-              arr.push(obj);
-          }
-          counter += 1;
-          return arr;
-      }, []);
+function neutralChart(results, totalDays){
+    resultDays = results.length
+    percent = (resultDays/totalDays) * 100
+    neutralPercent = Math.round(percent * 100) / 100
+    restPercent = Math.round((100-neutralPercent) * 100) / 100
+    restPercent = restPercent.toFixed(1)
+    document.getElementById("neutralDays").innerHTML = " in " + resultDays + " out of " + totalDays + " days..."
+    $('#neutralPercent').highcharts({
+        exporting: {
+      enabled: false
+    },credits: {
+       enabled: false
+  },
+          colors: ['#afb1ae', '#f5f5f5'],
+          title: {
+              text: String(neutralPercent) + "%",
+              verticalAlign: 'middle'
+          },
+          plotOptions: {
+              pie: {
+                  dataLabels: {
+                      enabled: false
+                  },
+                  size: 90,
+                  borderWidth: 0,
+                  renderTo: 'container'
+              }
+          },
+          series: [{
+              type: 'pie',
+              name: 'neutral',
+              innerSize: '90%',
+              data: JSON.parse("[" + neutralPercent + "," + restPercent +"]"),
+              states: {
+  hover: {
+  enabled: false, 
+  lineWidth: 1,
+  },
+  inactive: {
+          opacity: 1
+        }
+  }
+          }],
+          tooltip: {
+          enabled: false,
+          animation: false,
+      },  
+          
+      });
+}
+
+function callMonkeyLearn(moodArray){
+    jsonObj = {
+        "data": moodArray
+    }
+    var feelings = []
+    var color = []
+    //call monkeylearn api
+    const token = '3b217a947356a9f0d7e2a1c559133946dd18d220'
+    axios({
+        method:'post',
+        url: "https://api.monkeylearn.com/v3/classifiers/cl_pi3C7JiL/classify/",
+        data: jsonObj,
+        headers:{
+            'Authorization': `token ${token}`
+        }
+    }).then((response) =>{
+        for(resultArray of response.data){
+            feelings.push(resultArray.text)
+            if(String(resultArray.classifications[0].tag_name) == "Neutral"){
+                color.push('#afb1ae')
+            }
+            else if(String(resultArray.classifications[0].tag_name) == "Positive"){
+                color.push('#42a371')
+            }
+            else if(String(resultArray.classifications[0].tag_name) == "Negative"){
+                color.push('#f7533b')
+            }
+        }
+        wordCloud(feelings, color)
+    }).catch(error =>{
+        console.log(error.message)
+    })
+}
+
+function wordCloud(feelings, color){
+    // var feelings = ["angry", "Angry", "Pissed", "doubtful", "Happy", "happy", "Neutral", "Normal", "Normal", "indifferent", "Excited", "grateful"];
+    // var color = ['#f7533b', '#f7533b', '#f7533b', '#f7533b', "#42a371", "#42a371", "#afb1ae", "#afb1ae", "#afb1ae", "#afb1ae", "#42a371", "#42a371"];
+    // data = Highcharts.reduce(feelings, function (arr, word) {
+    //       var obj = Highcharts.find(arr, function (obj) {
+    //           return obj.name === word;
+    //       });
+    //       if (obj) {
+    //           obj.weight += 1;
+    //       } else {
+    //           obj = {
+    //               name: word,
+    //               weight: 1,
+    //               color: color[counter]
+    //           };
+    //           arr.push(obj);
+    //       }
+    //       counter += 1;
+    //       return arr;
+    //   }, []);
+    data = []
+    const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+    for (var i = 0; i < feelings.length; i++){
+        if (data.filter(e => e.name ==  feelings[i]).length == 0) {
+            count = countOccurrences(feelings, feelings[i])
+            obj = {
+                name: feelings[i],
+                weight: count,
+                color: color[i]
+            }
+            data.push(obj)
+        }    
+    }
       var getRandomPosition = function getRandomPosition(size) {
         return Math.round((size * (Math.random() + 0.5)) / 2);
       };
@@ -217,7 +304,8 @@ $(function () {
     text: ''
   }
 })
-})
+}
+
 
 $(function(){
   Highcharts.seriesType(
