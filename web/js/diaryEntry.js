@@ -57,8 +57,35 @@ $(document).ready(function() {
   });
 })
 
+var existed = false;
+async function getDiary(dateField){
+  await diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
+  .then((querySnapshot) => {
+      querySnapshot.forEach(doc =>{
+        date = doc.data().date
+        if (date === dateField){
+           existed = true
+        }
+      })
+  })
+  return existed
+}
+
 function submitEntry(){
     allFilled = true;
+    var dateField = $('#dateField').val();
+    if (dateField == ""){
+      $('#dateCheck').css("display", "block");
+      allFilled = false;
+    }
+    else{
+      $('#dateCheck').css("display", "none");
+    } 
+    getDiary(dateField).then(result => {
+      if(result == true){
+        alert('You have already added an entry for ' + dateField + '!')
+      }
+    })
     hoursSlept = parseInt($('#sleepField').val());
     if(isNaN(hoursSlept)){
       $('#sleepCheck').css("display", "block");
@@ -95,15 +122,8 @@ function submitEntry(){
       moodField = moodField.toLowerCase()
       moodField = moodField.charAt(0).toUpperCase() + moodField.slice(1)
     } 
-    var dateField = $('#dateField').val();
-    if (dateField == ""){
-      $('#dateCheck').css("display", "block");
-      allFilled = false;
-    }
-    else{
-      $('#dateCheck').css("display", "none");
-    } 
-    let data = {   //also need to check if user is logged in 
+   if(allFilled == True){
+        let data = {   //also need to check if user is logged in 
           anxiety: anxietyChecked,
           date: dateField,
           feeling: selectedMood,
@@ -121,7 +141,9 @@ function submitEntry(){
       }).catch((error) => {
         alert("An Error Has Occured");
     });
-  }
+   }
+        
+      }
 
 // async function getFromDB(dateField){
 //     var queryData = {}

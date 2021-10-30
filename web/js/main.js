@@ -1,4 +1,20 @@
-(function($) {
+function createCalendar(){
+    var date = new Date();
+    var today = date.getDate();
+    // Set click handlers for DOM elements
+    $(".right-button").click({date: date}, next_year);
+    $(".left-button").click({date: date}, prev_year);
+    $(".month").click({date: date}, month_click);
+    // $("#add-button").click({date: date}, new_event);
+    // Set current month as active
+    // new_event_json(10, "A Litttle Stress", "Cross", "Negative", "Furious", "Angry today.", date, today);
+    $(".months-row").children().eq(date.getMonth()).addClass("active-month");
+    init_calendar(date);
+    var events = check_events(today, date.getMonth()+1, date.getFullYear());
+    show_events(events, months[date.getMonth()], today);
+}
+
+// (function($) {
 
 	"use strict";
 
@@ -12,7 +28,7 @@ $(document).ready(function(){
     $(".month").click({date: date}, month_click);
     // $("#add-button").click({date: date}, new_event);
     // Set current month as active
-    new_event_json(10, "A Litttle Stress", "Cross", "Negative", "Furious", "Angry today.", date, today);
+    // new_event_json(10, "A Litttle Stress", "Cross", "Negative", "Furious", "Angry today.", date, today);
     $(".months-row").children().eq(date.getMonth()).addClass("active-month");
     init_calendar(date);
     var events = check_events(today, date.getMonth()+1, date.getFullYear());
@@ -249,4 +265,4 @@ const months = [
     "December" 
 ];
 
-})(jQuery);
+// })(jQuery);

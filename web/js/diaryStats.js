@@ -42,10 +42,17 @@ $(function () {
             else if(r.feeling == "Neutral"){
                 NeuResult.push(r)
             }
+            var dateString = r.date; 
+            var year  = dateString.substring(0,4);
+            var month  = dateString.substring(5,7);
+            var day   = dateString.substring(8,10);
+            var dateObj   = new Date(year, month-1, day);
+            var today = dateObj.getDate();
+            new_event_json(r.hoursSlept, r.stress, r.anxiety, r.feeling, r.mood, r.thoughts, dateObj, today);
             hoursSlept = r.hoursSlept
             sleepArray[hoursSlept] = sleepArray[hoursSlept]+1
         }
-        console.log(sleepArray)
+        createCalendar();
         var veryStress = result.reduce(function (n, r){
             return n + (r.stress == "Very Stress");
         }, 0);
