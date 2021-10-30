@@ -48,7 +48,7 @@ $(function () {
             var day   = dateString.substring(8,10);
             var dateObj   = new Date(year, month-1, day);
             var today = dateObj.getDate();
-            new_event_json(r.hoursSlept, r.stress, r.anxiety, r.feeling, r.mood, r.thoughts, dateObj, today);
+            new_event_json(r.hoursSlept, r.stress, r.anxiety, r.feeling, r.mood, r.thoughts, dateObj, today, r.id);
             hoursSlept = r.hoursSlept
             sleepArray[hoursSlept] = sleepArray[hoursSlept]+1
         }
@@ -298,7 +298,7 @@ function callMonkeyLearn(moodArray){
     var feelings = []
     var color = []
     //call monkeylearn api
-    const token = '3b217a947356a9f0d7e2a1c559133946dd18d220'
+    const token = 'ea201a414091a2ec6685d3224f9c7e217e7ba487'
     axios({
         method:'post',
         url: "https://api.monkeylearn.com/v3/classifiers/cl_pi3C7JiL/classify/",

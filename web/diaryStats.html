@@ -32,16 +32,6 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
     <script src="js/bootstrap-datepicker.js"></script>
-  
-
-    <!-- navbar -->
-    <div id="nav-placeholder"></div>
-    <script>
-        $(function(){
-        $("#nav-placeholder").load("navbar.html");
-        });
-    </script>
-</head>
 
 <style>
     /*  Calendar wrapper */
@@ -280,11 +270,26 @@
 .event-name{
     text-align:center;
 }
-
 </style>
-   
+</head>
+
+<body>
+  <!-- Preloader -->
+ <!-- <div class="spinner-wrapper">
+   <div class="spinner">
+       <div class="bounce1"></div>
+       <div class="bounce2"></div>
+       <div class="bounce3"></div>
+   </div>
+</div> -->
+ <!-- navbar -->
+ <div id="nav-placeholder"></div>
+ <script>
+     $(function(){
+     $("#nav-placeholder").load("navbar.html");
+     });
+ </script>
     <!-- Diary Stats-->
-    <body>
     <br>
     <div class="filter">
 		<div class="container">

@@ -178,7 +178,7 @@ function new_event(event) {
 }
 
 // Adds a json event to event_data
-function new_event_json(hours, stress, anxiety, feeling, word, thoughts, date, day) {
+function new_event_json(hours, stress, anxiety, feeling, word, thoughts, date, day, id) {
     var event = {
         "hours": hours,
         "stress": stress,
@@ -188,7 +188,8 @@ function new_event_json(hours, stress, anxiety, feeling, word, thoughts, date, d
         "thoughts": thoughts,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
-        "day": day
+        "day": day,
+        "id": id
     };
     event_data["events"].push(event);
 }
@@ -210,7 +211,11 @@ function show_events(events, month, day) {
     else {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
+            var editId = "edit" + String(i)
             var event_card = $("<br><div class='event-card'></div>");
+            dataID = String(events[i]["id"])
+            var onClick = "id='" + editId + "' onclick='editFunction(" + '"' + dataID + '"' +")'"
+            var edit = $("<div class='event-name'><a " + onClick + "style='float:right;cursor:pointer;'>Edit Entry</a><a style='float:left;'>Delete Entry</a></div><br>");
             var hours = $("<div class='event-name'> Hours Slept: <strong> "+events[i]["hours"]+" hours</strong></div><br>");
             var stress = $("<div class='event-name'> Stress Level: <strong> "+events[i]["stress"]+"</strong></div><br>");
             var anxiety = $("<div class='event-name'> Anxiety Level: <strong> "+events[i]["anxiety"]+"</strong></div><br>");
@@ -223,7 +228,7 @@ function show_events(events, month, day) {
             //     });
             //     event_count = $("<div class='event-cancelled'>Cancelled</div>");
             // }
-            $(event_card).append(hours).append(stress).append(anxiety).append(feeling).append(word).append(thoughts);
+            $(event_card).append(edit).append(hours).append(stress).append(anxiety).append(feeling).append(word).append(thoughts);
             $(".events-container").append(event_card);
         }
     }
@@ -265,4 +270,8 @@ const months = [
     "December" 
 ];
 
-// })(jQuery);
+// })(jQuery)
+function editFunction(id){
+    window.location.href = "../web/diaryEdit.html?id=" + String(id);
+}
+
