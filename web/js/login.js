@@ -15,7 +15,7 @@ $(document).ready(function() {
         //     console.log(user.user)
         //     window.location.href = "../web/homepage.html";  
         // })
-        .then((userCred) =>{
+        .then((userCred) => {
             console.log(userCred.user.uid)
             myStorage = window.sessionStorage;
             sessionStorage.setItem('uid', userCred.user.uid);
@@ -32,3 +32,6 @@ $(document).ready(function() {
         })
     })
 })
+
+
+
