@@ -55,9 +55,16 @@
   <div id="nav-placeholder"></div>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
-    $(function () {
-      $("#nav-placeholder").load("navbar.html");
-    });
+    $(function(){
+            const nav = sessionStorage.getItem('navbar');
+            if(nav == null){
+                $("#nav-placeholder").load("navbar.html");
+            }
+            else{
+                $("#nav-placeholder").load(nav);
+            }
+           
+        });
   </script>
 
   <section id="wrap">

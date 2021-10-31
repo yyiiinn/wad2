@@ -24,9 +24,16 @@
     <!-- navbar -->
     <div id="nav-placeholder"></div>
     <script>
-        $(function(){
-        $("#nav-placeholder").load("navbar.html");
-        });
+      $(function(){
+        const nav = sessionStorage.getItem('navbar');
+        if(nav == null){
+            $("#nav-placeholder").load("navbar.html");
+        }
+        else{
+            $("#nav-placeholder").load(nav);
+        }
+        
+    });
     </script>
 </head>
    
