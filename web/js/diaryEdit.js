@@ -1,12 +1,18 @@
 firebase.initializeApp(firebaseConfig);
 const usersRef = firebase.firestore().collection("Users")
 const diaryRefs = firebase.firestore().collection("Diary")
-
-async function getDocById(id){
+var docID;
+var dateGlobal;
+async function getDocById(id, userID){
     var data = []
     await diaryRefs.doc(id).get()
     .then(snapshot => {
-        data = snapshot.data()
+        if(userID != snapshot.data().userID){
+           window.location.href = "../web/homepage.html";
+        }
+        else{
+          data = snapshot.data()
+        }
     })
     return data
 }
@@ -18,13 +24,15 @@ $(document).ready(function() {
     var query = window.location.search;
     const urlParams = new URLSearchParams(query);
     const id = urlParams.get('id')
-    getDocById(id).then(result => {
+    docID = id
+    getDocById(id, "3gofXg9EghbRQZM7NRdPsVEd9vA3").then(result => {
         console.log(result)
         date = result.date
         var year  = date.substring(0,4);
         var month  = date.substring(5,7);
         var day   = date.substring(8,10);
         newDate = day + " " + monthArr[month-1] + " " + year
+        dateGlobal = newDate
         var n = new Date(date)
         var day = n.getDay() - 1
         if(day == -1){
@@ -34,13 +42,13 @@ $(document).ready(function() {
         document.getElementById("day").innerHTML += dayArr[day];
         document.getElementById("moodField").value = result.mood;
         document.getElementById("thoughtsField").value = result.thoughts;
-        // document.getElementById("dateField").value = date;
         document.getElementById("sleepField").value = result.hoursSlept;
         document.getElementById('feelingSelect').value= result.feeling;
-        // document.getElementById('anxietyCheck').checked= result.anxiety;
-        // document.getElementById('stressCheck').value= result.stress;
+        var $anxiety = result.anxiety
+        var $stress = result.stress
+        $("input[name=stress][value="+$stress+"]").attr('checked', true);
+        $("input[name=anxiety][value="+$anxiety+"]").attr('checked', true);
     })   
-    document.getElementById("dateField").max = new Date(new Date().getTime() + 86400000).toISOString().substring(0, 10);
     $('#sleepField').on('keydown keyup change', function(e){
       if ($(this).val() > 24 
           && e.keyCode !== 46 // keycode for delete
@@ -81,35 +89,8 @@ $(document).ready(function() {
   });
 })
 
-var existed = false;
-async function getDiary(dateField){
-  await diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
-  .then((querySnapshot) => {
-      querySnapshot.forEach(doc =>{
-        date = doc.data().date
-        if (date === dateField){
-           existed = true
-        }
-      })
-  })
-  return existed
-}
-
 function submitEntry(){
     allFilled = true;
-    var dateField = $('#dateField').val();
-    if (dateField == ""){
-      $('#dateCheck').css("display", "block");
-      allFilled = false;
-    }
-    else{
-      $('#dateCheck').css("display", "none");
-    } 
-    // getDiary(dateField).then(result => {
-    //   if(result == true){
-    //     alert('You have already added an entry for ' + dateField + '!')
-    //   }
-    // })
     hoursSlept = parseInt($('#sleepField').val());
     if(isNaN(hoursSlept)){
       $('#sleepCheck').css("display", "block");
@@ -146,26 +127,24 @@ function submitEntry(){
       moodField = moodField.toLowerCase()
       moodField = moodField.charAt(0).toUpperCase() + moodField.slice(1)
     } 
-   if(allFilled == True){
-        let data = {   //also need to check if user is logged in 
-          anxiety: anxietyChecked,
-          date: dateField,
-          feeling: selectedMood,
-          hoursSlept: hoursSlept,
-          stress: stressChecked,
-          thoughts: thoughtsField,
-          mood: moodField,
-          userID: "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2"
-      }
-      diaryRefs.add(data).then((result) => {
-        dArr = dateField.split("-");
-        date = dArr[2]+ "/" +dArr[1]+ "/" +dArr[0];
-        localStorage.setItem("dateField", date)
-        window.location.href = "../web/diarySuccess.html";  
-      }).catch((error) => {
-        alert("An Error Has Occured");
-    });
-   }
-        
+    if(allFilled == true){
+          diaryRefs.onSnapshot((snapshot) =>{
+            diaryRefs.doc(docID).update({
+                anxiety: anxietyChecked,
+                feeling: selectedMood,
+                hoursSlept: hoursSlept,
+                stress: stressChecked,
+                thoughts: thoughtsField,
+                mood: moodField,
+            }).catch((error) =>{
+              alert("An Error Has Occured")
+            })
+            customAlertBox()
+          })
+        } 
       }
 
+function customAlertBox(){
+  document.getElementById("modal").innerHTML = "Changes for entry on " + dateGlobal + " is successfully saved" 
+  $("#exampleModal").modal()
+}

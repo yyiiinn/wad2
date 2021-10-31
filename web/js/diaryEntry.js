@@ -81,11 +81,6 @@ function submitEntry(){
     else{
       $('#dateCheck').css("display", "none");
     } 
-    getDiary(dateField).then(result => {
-      if(result == true){
-        alert('You have already added an entry for ' + dateField + '!')
-      }
-    })
     hoursSlept = parseInt($('#sleepField').val());
     if(isNaN(hoursSlept)){
       $('#sleepCheck').css("display", "block");
@@ -122,7 +117,11 @@ function submitEntry(){
       moodField = moodField.toLowerCase()
       moodField = moodField.charAt(0).toUpperCase() + moodField.slice(1)
     } 
-   if(allFilled == True){
+    getDiary(dateField).then(result => {
+      if(result == true){
+        alert('You have already added an entry for ' + dateField + '!')
+      }
+      else{
         let data = {   //also need to check if user is logged in 
           anxiety: anxietyChecked,
           date: dateField,
@@ -141,27 +140,6 @@ function submitEntry(){
       }).catch((error) => {
         alert("An Error Has Occured");
     });
-   }
-        
       }
-
-// async function getFromDB(dateField){
-//     var queryData = {}
-//     const PROMISE = new Promise((resolve) =>{
-//       let inDB = false;
-//       var test = diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
-//       .then((querySnapshot) => {
-//           queryData = querySnapshot.docs.map((doc) => ({
-//               date: doc.data().date
-//           }));
-//           console.log(queryData)
-//           for(var key in queryData){
-//             if(queryData[key]["date"] == dateField){
-//               inDB = true;
-//             }
-//           }
-//           resolve(inDB)
-//       })
-//     })
-//   }
-
+    })      
+      }

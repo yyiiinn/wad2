@@ -18,7 +18,7 @@ function createCalendar(){
 
 	"use strict";
 
-	// Setup the calendar with the current date
+// Setup the calendar with the current date
 $(document).ready(function(){
     var date = new Date();
     var today = date.getDate();
@@ -212,10 +212,12 @@ function show_events(events, month, day) {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
             var editId = "edit" + String(i)
+            var deleteId = "delete" + String(i)
             var event_card = $("<br><div class='event-card'></div>");
             dataID = String(events[i]["id"])
             var onClick = "id='" + editId + "' onclick='editFunction(" + '"' + dataID + '"' +")'"
-            var edit = $("<div class='event-name'><a " + onClick + "style='float:right;cursor:pointer;'>Edit Entry</a><a style='float:left;'>Delete Entry</a></div><br>");
+            var onClickDelete = "id='" + deleteId + "' onclick='deleteFunction(" + '"' + dataID + '"' +")'"
+            var edit = $("<div class='event-name'><a " + onClick + "style='float:right;cursor:pointer;'>Edit Entry</a><a " + onClickDelete + "style='float:left;cursor:pointer;'>Delete Entry</a></div><br>");
             var hours = $("<div class='event-name'> Hours Slept: <strong> "+events[i]["hours"]+" hours</strong></div><br>");
             var stress = $("<div class='event-name'> Stress Level: <strong> "+events[i]["stress"]+"</strong></div><br>");
             var anxiety = $("<div class='event-name'> Anxiety Level: <strong> "+events[i]["anxiety"]+"</strong></div><br>");
@@ -275,3 +277,23 @@ function editFunction(id){
     window.location.href = "../web/diaryEdit.html?id=" + String(id);
 }
 
+function deleteFunction(id){
+    $("#exampleModal").modal();
+    var deleteEntry = document.getElementsByClassName("deleteEntry"); 
+    deleteEntry[0].setAttribute("id", String(id))
+}
+
+function deleteDiary(button){
+    deleteDiaryAsync(button).then(result => {
+        location.reload()
+    })
+}
+
+async function deleteDiaryAsync(button){
+    id = button.id
+    await diaryRefs.doc(button.id).delete().then(snapshot => {
+        console.log(snapshot)
+    }).catch(error =>{
+        console.log(erorr.message)
+    });
+}

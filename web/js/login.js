@@ -7,14 +7,18 @@ $(document).ready(function() {
         var email = $("#email").val();
         var password = $("#pass").val();
 
-
-
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(function(user) {
-            // redirect to homepage after successful login
-            // var url = "/wad2/web/homepage.html";    
-            // $(location).attr('href',url);
-            window.location.href = "../web/homepage.html";  
+        // .then(function(user) {
+        //     // redirect to homepage after successful login
+        //     // var url = "/wad2/web/homepage.html";    
+        //     // $(location).attr('href',url);
+        //     console.log(user.user)
+        //     window.location.href = "../web/homepage.html";  
+        // })
+        .then((userCred) =>{
+            console.log(userCred.user.uid)
+            myStorage = window.sessionStorage;
+            sessionStorage.setItem('uid', userCred.user.uid);
         })
         .catch(function(err) {
             if (err.code == "auth/wrong-password") {
