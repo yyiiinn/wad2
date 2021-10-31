@@ -14,7 +14,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top" >
     <!-- Text Logo - Use this if you don't have a graphic logo -->
-    <a class="navbar-brand logo-text page-scroll" href="homepage.html" style="margin: 0px;">
+    <a class="navbar-brand logo-text page-scroll" href="../web/" style="margin: 0px;">
         <img src="images/hand_heart.png" style="height: 50px;"> 
         <span style="font-size:large;">Count On Me</span>
     </a>
@@ -36,7 +36,7 @@
         <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="homepage.html">HOME <span class="sr-only">(current)</span></a>
+                <a class="nav-link page-scroll" href="index.html">HOME <span class="sr-only">(current)</span></a>
             </li>
 
 
@@ -78,12 +78,17 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link page-scroll" href="profile.html">PROFILE</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">WELCOME, USERNAME</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" role="menu">
+                    <a class="dropdown-item" href="profile.html"><span class="item-text">VIEW PROFILE</span></a>
+                    <!-- <div class="dropdown-items-divide-hr"></div>
+                    <a class="dropdown-item" href="" id="logout" onclick="logout()"><span class="item-text">LOGOUT</span></a> -->
+                </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#" id="logout" href="#" onclick="logout()" >LOGOUT</a>
+                <a class="nav-link page-scroll" href="#" id="logout" onclick="logout()" >LOGOUT</a>
             </li> 
         </ul>
 
@@ -98,7 +103,7 @@
             console.log('Signed Out');
             sessionStorage.removeItem('uid');
             sessionStorage.removeItem('navbar');
-            window.location.href = "../web/homepage.html";  
+            window.location.href = "../web/";  
 
           }, function(error) {
             console.error('Sign Out Error', error);

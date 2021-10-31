@@ -10,7 +10,7 @@ async function getDocById(id, userID){
     await diaryRefs.doc(id).get()
     .then(snapshot => {
         if(userID == undefined || snapshot.data() == undefined || userID != snapshot.data().userID){
-           window.location.href = "../web/homepage.html";
+           window.location.href = "../web/";
         }
         else{
           data = snapshot.data()
@@ -25,7 +25,7 @@ $(document).ready(function() {
     const urlParams = new URLSearchParams(query);
     const id = urlParams.get('id')
     if(uid == null || id == undefined || uid == undefined){
-        window.location.href = "../web/homepage.html"; 
+        window.location.href = "../web/"; 
     }
     var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
     var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
