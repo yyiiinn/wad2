@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="#piano">PIANO</a>
+                <a class="nav-link page-scroll" href="piano.html">PIANO</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -80,14 +80,29 @@
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="profile.html">VIEW PROFILE</a>
+                <a class="nav-link page-scroll" href="profile.html">PROFILE</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link page-scroll" href="homepage.html">SIGN OUT</a>
+                <a class="nav-link page-scroll" href="#" id="logout" href="#" onclick="logout()" >LOGOUT</a>
             </li> 
         </ul>
 
     </div>
 </nav> <!-- end of navbar -->
 <!-- end of navbar -->
+
+<script>
+    function logout() {
+        firebase.auth().signOut()
+        .then(function() {
+            console.log('Signed Out');
+            sessionStorage.removeItem('uid');
+            sessionStorage.removeItem('navbar');
+            window.location.href = "../web/homepage.html";  
+
+          }, function(error) {
+            console.error('Sign Out Error', error);
+        });
+    }
+</script>

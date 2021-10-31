@@ -62,11 +62,21 @@
     
      <!-- navbar -->
      <div id="nav-placeholder"></div>
-     <script>
-         $(function(){
-            $("#nav-placeholder").load("navbar.html");
-         });
-     </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            const nav = sessionStorage.getItem('navbar');
+            console.log(nav);
+
+            if(nav == null){
+                $("#nav-placeholder").load("navbar.html");
+            }
+            else{
+                $("#nav-placeholder").load("loginNavBar.html");
+                // sessionStorage.removeItem('navbar');
+            }   
+        });
+    </script>
 </head>
 
 <body>

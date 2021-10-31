@@ -62,12 +62,21 @@
     
      <!-- navbar -->
      <div id="nav-placeholder"></div>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-        $(function(){
-        $("#nav-placeholder").load("navbar.html");
-        });
-    </script>
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+     <script>
+         $(function(){
+             const nav = sessionStorage.getItem('navbar');
+             console.log(nav);
+             
+             if(nav == null){
+                 $("#nav-placeholder").load("navbar.html");
+             }
+             else{
+                 $("#nav-placeholder").load("loginNavBar.html");
+             }
+            
+         });
+     </script>
 </head>
 
 <body>
@@ -115,7 +124,9 @@
                                                         <span id="message"></span>
                                                     </div>
                                                     <div class="form-group form-button">
-                                                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                                        <input type="submit" name="signin" id="signin" class="form-submit" 
+                                                        onclick="countSession()"
+                                                        value="Log in"/>
                                                     </div>
                                                 </form>
                                             </div>
