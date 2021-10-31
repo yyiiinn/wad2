@@ -1,8 +1,12 @@
 firebase.initializeApp(firebaseConfig);
 const usersRef = firebase.firestore().collection("Users")
 const diaryRefs = firebase.firestore().collection("Diary")
+const uid = sessionStorage.getItem('uid');
 
 $(document).ready(function() {
+    if(uid == null){
+      window.location.href = "../web/homepage.html"; 
+    }
     n = new Date();
     y = n.getFullYear();
     m = n.getMonth();
@@ -59,7 +63,7 @@ $(document).ready(function() {
 
 var existed = false;
 async function getDiary(dateField){
-  await diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
+  await diaryRefs.where("userID", "==", uid).get()
   .then((querySnapshot) => {
       querySnapshot.forEach(doc =>{
         date = doc.data().date
@@ -130,7 +134,7 @@ function submitEntry(){
           stress: stressChecked,
           thoughts: thoughtsField,
           mood: moodField,
-          userID: "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2"
+          userID: uid
       }
       diaryRefs.add(data).then((result) => {
         dArr = dateField.split("-");

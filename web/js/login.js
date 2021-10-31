@@ -19,6 +19,8 @@ $(document).ready(function() {
             console.log(userCred.user.uid)
             myStorage = window.sessionStorage;
             sessionStorage.setItem('uid', userCred.user.uid);
+            sessionStorage.setItem('navbar', "loginNavBar.html");
+            window.location.href = "../web/homepage.html";  
         })
         .catch(function(err) {
             if (err.code == "auth/wrong-password") {

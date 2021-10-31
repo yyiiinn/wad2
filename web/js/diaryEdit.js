@@ -1,6 +1,8 @@
 firebase.initializeApp(firebaseConfig);
 const usersRef = firebase.firestore().collection("Users")
 const diaryRefs = firebase.firestore().collection("Diary")
+const uid = sessionStorage.getItem('uid');
+
 var docID;
 var dateGlobal;
 async function getDocById(id, userID){
@@ -19,13 +21,16 @@ async function getDocById(id, userID){
 
 
 $(document).ready(function() {
+    if(uid == null){
+        window.location.href = "../web/homepage.html"; 
+    }
     var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
     var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     var query = window.location.search;
     const urlParams = new URLSearchParams(query);
     const id = urlParams.get('id')
     docID = id
-    getDocById(id, "3gofXg9EghbRQZM7NRdPsVEd9vA3").then(result => {
+    getDocById(id, uid).then(result => {
         console.log(result)
         date = result.date
         var year  = date.substring(0,4);

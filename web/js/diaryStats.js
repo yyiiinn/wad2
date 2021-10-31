@@ -1,11 +1,11 @@
 firebase.initializeApp(firebaseConfig);
 const usersRef = firebase.firestore().collection("Users")
 const diaryRefs = firebase.firestore().collection("Diary")
-
+const uid = sessionStorage.getItem('uid');
 
 async function getDiary(){
     var diaryData;
-    var test = await diaryRefs.where("userID", "==", "wioE4JOjwid6r2Y3JLv2YL0Z6FJ2").get()
+    var test = await diaryRefs.where("userID", "==", uid).get()
     .then((querySnapshot) => {
         diaryData = querySnapshot.docs.map((doc) => ({
             id: doc.id,             // will the id better if is using user's uid or auto generated id?
@@ -24,6 +24,9 @@ async function getDiary(){
 
 
 $(function () {
+    if(uid == null){
+        window.location.href = "../web/homepage.html"; 
+    }
     getDiary().then(result => {
         console.log(result) //db results
         posResult = []; 
