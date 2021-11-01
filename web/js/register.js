@@ -6,6 +6,7 @@ $(document).ready(function() {
     $(".signup-form").on("submit", function(event) {
         event.preventDefault();
 
+        var username = $('#username').val();
         var name = $('#name').val();
         var email = $("#email").val();
         var password = $("#pass").val();
@@ -15,6 +16,7 @@ $(document).ready(function() {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(function(user) {
                 let data = {
+                    username: username,
                     name: name
                 };
 
