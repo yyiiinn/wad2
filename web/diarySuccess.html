@@ -28,15 +28,13 @@
     <script>
         $(function(){
             const nav = sessionStorage.getItem('navbar');
-            console.log(nav);
-
             if(nav == null){
                 $("#nav-placeholder").load("navbar.html");
             }
             else{
-                $("#nav-placeholder").load("loginNavBar.html");
-                // sessionStorage.removeItem('navbar');
-            }   
+                $("#nav-placeholder").load(nav);
+            }
+           
         });
     </script>
 </head>

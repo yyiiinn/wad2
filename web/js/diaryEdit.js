@@ -9,8 +9,8 @@ async function getDocById(id, userID){
     var data = []
     await diaryRefs.doc(id).get()
     .then(snapshot => {
-        if(userID != snapshot.data().userID){
-           window.location.href = "../web/homepage.html";
+        if(userID == undefined || snapshot.data() == undefined || userID != snapshot.data().userID){
+           window.location.href = "../web/";
         }
         else{
           data = snapshot.data()
@@ -21,15 +21,15 @@ async function getDocById(id, userID){
 
 
 $(document).ready(function() {
-    if(uid == null){
-        window.location.href = "../web/homepage.html"; 
-    }
-    var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
-    var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     var query = window.location.search;
     const urlParams = new URLSearchParams(query);
     const id = urlParams.get('id')
-    docID = id
+    if(uid == null || id == undefined || uid == undefined){
+        window.location.href = "../web/"; 
+    }
+    var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+    var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    // docID = id
     getDocById(id, uid).then(result => {
         console.log(result)
         date = result.date
@@ -51,8 +51,8 @@ $(document).ready(function() {
         document.getElementById('feelingSelect').value= result.feeling;
         var $anxiety = result.anxiety
         var $stress = result.stress
-        $("input[name=stress][value="+$stress+"]").attr('checked', true);
-        $("input[name=anxiety][value="+$anxiety+"]").attr('checked', true);
+        $("input[name='stress'][value='"+$stress+"']").attr('checked', true);
+        $("input[name='anxiety'][value='"+$anxiety+"']").attr('checked', true);
     })   
     $('#sleepField').on('keydown keyup change', function(e){
       if ($(this).val() > 24 

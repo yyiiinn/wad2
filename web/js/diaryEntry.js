@@ -5,7 +5,7 @@ const uid = sessionStorage.getItem('uid');
 
 $(document).ready(function() {
     if(uid == null){
-      window.location.href = "../web/homepage.html"; 
+      window.location.href = "../web/"; 
     }
     n = new Date();
     y = n.getFullYear();

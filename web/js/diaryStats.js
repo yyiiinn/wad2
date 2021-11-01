@@ -25,7 +25,7 @@ async function getDiary(){
 
 $(function () {
     if(uid == null){
-        window.location.href = "../web/homepage.html"; 
+        window.location.href = "../web/"; 
     }
     getDiary().then(result => {
         console.log(result) //db results

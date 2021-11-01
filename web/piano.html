@@ -53,18 +53,16 @@
   <div id="nav-placeholder"></div>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
-      $(function(){
-          const nav = sessionStorage.getItem('navbar');
-          console.log(nav);
-
-          if(nav == null){
-              $("#nav-placeholder").load("navbar.html");
-          }
-          else{
-              $("#nav-placeholder").load("loginNavBar.html");
-              // sessionStorage.removeItem('navbar');
-          }   
-      });
+    $(function(){
+            const nav = sessionStorage.getItem('navbar');
+            if(nav == null){
+                $("#nav-placeholder").load("navbar.html");
+            }
+            else{
+                $("#nav-placeholder").load(nav);
+            }
+           
+        });
   </script>
 
   <section id="wrap">

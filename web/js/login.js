@@ -16,11 +16,10 @@ $(document).ready(function() {
         //     window.location.href = "../web/homepage.html";  
         // })
         .then((userCred) => {
-            console.log(userCred.user.uid)
             myStorage = window.sessionStorage;
             sessionStorage.setItem('uid', userCred.user.uid);
             sessionStorage.setItem('navbar', "loginNavBar.html");
-            window.location.href = "../web/homepage.html";  
+            window.location.href = "../web/";  
         })
         .catch(function(err) {
             if (err.code == "auth/wrong-password") {

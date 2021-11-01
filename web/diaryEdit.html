@@ -21,22 +21,28 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
 
+    <!-- Preloader -->
+    <!-- <div class="spinner-wrapper">
+      <div class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+      </div>
+    </div> -->
     <!-- navbar -->
     <div id="nav-placeholder"></div>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
         $(function(){
-            const nav = sessionStorage.getItem('navbar');
-            console.log(nav);
-
-            if(nav == null){
-                $("#nav-placeholder").load("navbar.html");
-            }
-            else{
-                $("#nav-placeholder").load("loginNavBar.html");
-                // sessionStorage.removeItem('navbar');
-            }   
-        });
+          const nav = sessionStorage.getItem('navbar');
+          if(nav == null){
+              $("#nav-placeholder").load("navbar.html");
+          }
+          else{
+              $("#nav-placeholder").load(nav);
+          }
+          
+      });
     </script>
 </head>
    
@@ -161,15 +167,7 @@
             <textarea placeholder="How's your day ? 😊" class="form-control" id="thoughtsField" rows="5"></textarea>
             <br><br>
 
-            <button onclick="submitEntry()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the buttons below for some good music or soul-filling podcasts." style="width:100%;">SAVE MY DIARY</button>
-
-            <!-- <div class="row">
-              <div id="spotify_btn" class="col-md d-flex justify-content-center">
-              </div>
-
-              <div id="podcast_btn" class="col-md d-flex justify-content-center">
-              </div>
-            </div> -->
+            <button onclick="submitEntry()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the buttons below for some good music or soul-filling podcasts." style="width:100%;">UPDATE MY DIARY</button>
           </div>
         </form>
     </div>
