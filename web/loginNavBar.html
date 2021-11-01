@@ -78,14 +78,9 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">WELCOME, USERNAME</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" role="menu">
-                    <a class="dropdown-item" href="profile.html"><span class="item-text">VIEW PROFILE</span></a>
-                    <!-- <div class="dropdown-items-divide-hr"></div>
-                    <a class="dropdown-item" href="" id="logout" onclick="logout()"><span class="item-text">LOGOUT</span></a> -->
-                </div>
-            </li>
+            <li class="nav-item">
+                <a class="nav-link page-scroll" href="profile.html" id="profile">PROFILE</a>
+            </li> 
 
             <li class="nav-item">
                 <a class="nav-link page-scroll" href="#" id="logout" onclick="logout()" >LOGOUT</a>
@@ -96,17 +91,4 @@
 </nav> <!-- end of navbar -->
 <!-- end of navbar -->
 
-<script>
-    function logout() {
-        firebase.auth().signOut()
-        .then(function() {
-            console.log('Signed Out');
-            sessionStorage.removeItem('uid');
-            sessionStorage.removeItem('navbar');
-            window.location.href = "../web/";  
-
-          }, function(error) {
-            console.error('Sign Out Error', error);
-        });
-    }
-</script>
+<script src="js/signout.js"></script>

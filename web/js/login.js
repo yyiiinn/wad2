@@ -16,10 +16,39 @@ $(document).ready(function() {
         //     window.location.href = "../web/homepage.html";  
         // })
         .then((userCred) => {
+
+            console.log(userCred);
+            
+            myStorage = window.localStorage;
             myStorage = window.sessionStorage;
-            sessionStorage.setItem('uid', userCred.user.uid);
+            localStorage.setItem('uid', userCred.user.uid);
             sessionStorage.setItem('navbar', "loginNavBar.html");
-            window.location.href = "../web/";  
+
+            const usersRef = firebase.firestore().collection("Users");
+            usersRef.get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    if (email == doc.data().email) {
+                        // console.log(doc.data().username)
+                        var username = doc.data().username
+                        var name = doc.data().name
+
+                        localStorage.setItem('username',username)
+                        localStorage.setItem('name',name)
+                        localStorage.setItem('email',email)
+                    }
+                })
+            })
+
+            console.log(localStorage)
+            console.log(sessionStorage)
+
+            $('#message').html('Login is successful!').css('color', 'green').show();   
+            // window.location.assign("../web/"); setTimeout(undefined, 5000);
+    
+            window.open("../web/");
+            // window.location.href = "../web/";  
+
+
         })
         .catch(function(err) {
             if (err.code == "auth/wrong-password") {
@@ -31,6 +60,10 @@ $(document).ready(function() {
         })
     })
 })
+
+
+
+
 
 
 

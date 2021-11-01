@@ -54,7 +54,7 @@ $(document).ready(function() {
     var test = usersRef.where("email", "==", "123@gmail.com").get()
     .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => ({
-            id: doc.id,             // will the id better if is using user's uid or auto generated id?
+            id: doc.id,   // will the id better if is using user's uid or auto generated id?
             email: doc.data().email,
         }));
     })
