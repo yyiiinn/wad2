@@ -41,37 +41,37 @@
 <body data-spy="scroll" data-target=".fixed-top">
 
   <!-- Preloader -->
-  <div class="spinner-wrapper">
+  <!-- <div class="spinner-wrapper">
     <div class="spinner">
       <div class="bounce1"></div>
       <div class="bounce2"></div>
       <div class="bounce3"></div>
     </div>
-  </div>
+  </div> -->
 
   <!-- end of preloader -->
   <div id="nav-placeholder"></div>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
-    $(function(){
-            const nav = sessionStorage.getItem('navbar');
-            if(nav == null){
-                $("#nav-placeholder").load("navbar.html");
-            }
-            else{
-                $("#nav-placeholder").load(nav);
-            }
-           
-        });
+    $(function () {
+      const nav = sessionStorage.getItem('navbar');
+      if (nav == null) {
+        $("#nav-placeholder").load("navbar.html");
+      }
+      else {
+        $("#nav-placeholder").load(nav);
+      }
+
+    });
   </script>
 
   <section id="wrap">
     <header>
-      <h1>JS Piano</h1>
-      <h2>Use your keyboard. Hover for hints.</h2>
+      <h1 class="text-center">JS Piano</h1>
+      <h2 class="text-center">Use your keyboard. Hover for hints.</h2>
     </header>
     <section id="main">
-      <div class="nowplaying"></div>
+      <div class="nowplaying text-center"></div>
       <div class="keys">
         <div data-key="65" class="key" data-note="C">
           <span class="hints">A</span>
@@ -121,7 +121,7 @@
         <div data-key="80" class="key sharp" data-note="D#">
           <span class="hints">P</span>
         </div>
-        <div data-key="186" class="key" data-note="E">
+        <div data-key="59" class="key" data-note="E">
           <span class="hints">;</span>
         </div>
       </div>
@@ -142,9 +142,27 @@
       <audio data-key="79" src="http://carolinegabriel.com/demo/js-keyboard/sounds/053.wav"></audio>
       <audio data-key="76" src="http://carolinegabriel.com/demo/js-keyboard/sounds/054.wav"></audio>
       <audio data-key="80" src="http://carolinegabriel.com/demo/js-keyboard/sounds/055.wav"></audio>
-      <audio data-key="186" src="http://carolinegabriel.com/demo/js-keyboard/sounds/056.wav"></audio>
+      <audio data-key="59" src="http://carolinegabriel.com/demo/js-keyboard/sounds/056.wav"></audio>
     </section>
   </section>
+  <div class="container-fluid">
+    <div class="row">
+      
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="row justify-content-center">
+          <h3>Your Saved Music</h3>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row justify-content-center">
+          <h3>Suggested Music</h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -166,7 +184,7 @@
   <!-- Don't change the format for any other products. -->
   <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
   <script src="js/database.js"></script>
-  <script src="js/login.js"></script>  
+  <script src="js/login.js"></script>
 
 </body>
 
