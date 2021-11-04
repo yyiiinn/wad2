@@ -21,7 +21,7 @@ $(document).ready(function() {
             
             myStorage = window.localStorage;
             myStorage = window.sessionStorage;
-            localStorage.setItem('uid', userCred.user.uid);
+            sessionStorage.setItem('uid', userCred.user.uid);
             sessionStorage.setItem('navbar', "loginNavBar.html");
 
             const usersRef = firebase.firestore().collection("Users");
@@ -45,8 +45,8 @@ $(document).ready(function() {
             $('#message').html('Login is successful!').css('color', 'green').show();   
             // window.location.assign("../web/"); setTimeout(undefined, 5000);
     
-            window.open("../web/");
-            // window.location.href = "../web/";  
+            // window.open("index.html");
+            window.location.href = "index.html";  
 
 
         })

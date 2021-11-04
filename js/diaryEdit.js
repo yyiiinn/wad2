@@ -10,7 +10,7 @@ async function getDocById(id, userID){
     await diaryRefs.doc(id).get()
     .then(snapshot => {
         if(userID == undefined || snapshot.data() == undefined || userID != snapshot.data().userID){
-           window.location.href = "../web/";
+           window.location.href = "index.html";
         }
         else{
           data = snapshot.data()
@@ -19,17 +19,16 @@ async function getDocById(id, userID){
     return data
 }
 
-
 $(document).ready(function() {
     var query = window.location.search;
     const urlParams = new URLSearchParams(query);
     const id = urlParams.get('id')
     if(uid == null || id == undefined || uid == undefined){
-        window.location.href = "../web/"; 
+        window.location.href = "index.html"; 
     }
     var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
     var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    // docID = id
+    docID = id
     getDocById(id, uid).then(result => {
         console.log(result)
         date = result.date

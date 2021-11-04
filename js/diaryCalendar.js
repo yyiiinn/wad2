@@ -274,7 +274,7 @@ const months = [
 
 // })(jQuery)
 function editFunction(id){
-    window.location.href = "../web/diaryEdit.html?id=" + String(id);
+    window.location.href = "diaryEdit.html?id=" + String(id);
 }
 
 function deleteFunction(id){

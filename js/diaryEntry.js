@@ -4,8 +4,9 @@ const diaryRefs = firebase.firestore().collection("Diary")
 const uid = sessionStorage.getItem('uid');
 
 $(document).ready(function() {
+    console.log(uid)
     if(uid == null){
-      window.location.href = "../web/"; 
+      window.location.href = "index.html"; 
     }
     n = new Date();
     y = n.getFullYear();
@@ -140,7 +141,7 @@ function submitEntry(){
         dArr = dateField.split("-");
         date = dArr[2]+ "/" +dArr[1]+ "/" +dArr[0];
         localStorage.setItem("dateField", date)
-        window.location.href = "../web/diarySuccess.html";  
+        window.location.href = "diarySuccess.html";  
       }).catch((error) => {
         alert("An Error Has Occured");
     });

@@ -5,7 +5,7 @@ function logout() {
         localStorage.clear()
         sessionStorage.removeItem('navbar');
 
-        window.location.href = "../web/";  
+        window.location.href = "index.html";  
 
       }, function(error) {
         console.error('Sign Out Error', error);

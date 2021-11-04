@@ -23,7 +23,7 @@ $(document).ready(function() {
 
                 usersRef.doc(email).set(data);  //for this, i feel can use email as the uid so that we can identify user easily
 
-                $('#message').html('<p style="color:green;">You have successfully registered. Click <a href="../web/login.html">here</a> to login </p>').show();   
+                $('#message').html('<p style="color:green;">You have successfully registered. Click <a href="login.html">here</a> to login </p>').show();   
             })
             .catch(function(err) {
                 if (err.code == "auth/invalid-email") {

@@ -4,10 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services.">
-    <meta name="author" content="Inovatik">
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,14 +26,14 @@
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Count on Me - Sign Up</title>
+    <title>Count on Me - Login</title>
     <link rel="icon" href="images/hand_heart.png">
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="../web/css/signup_login.css">
+    <link rel="stylesheet" href="css/signup_login.css">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
@@ -62,21 +58,21 @@
     
      <!-- navbar -->
      <div id="nav-placeholder"></div>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-        $(function(){
-            const nav = sessionStorage.getItem('navbar');
-            console.log(nav);
-
-            if(nav == null){
-                $("#nav-placeholder").load("navbar.html");
-            }
-            else{
-                $("#nav-placeholder").load("loginNavBar.html");
-                // sessionStorage.removeItem('navbar');
-            }   
-        });
-    </script>
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+     <script>
+         $(function(){
+             const nav = sessionStorage.getItem('navbar');
+             console.log(nav);
+             
+             if(nav == null){
+                 $("#nav-placeholder").load("navbar.html");
+             }
+             else{
+                 $("#nav-placeholder").load("loginNavBar.html");
+             }
+            
+         });
+     </script>
 </head>
 
 <body>
@@ -89,53 +85,58 @@
                         <div class="signup-container">
 
                             <div class="main">
-                                <!-- Sign up form -->
-                                <section class="signup">
+                                <!-- Sing in  Form -->
+                                <section class="sign-in">
                                     <div class="container">
-                                        <div class="signup-content">
-                                            <div class="signup-form text-left">
-                                                <h2 class="form-title">Sign up</h2>
-                                                <form method="POST" class="register-form" id="register-form">
+                                        <div class="signin-content">
+                                            <div class="signin-image">
+                                                <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                                                <a href="signup.html" class="signup-image-link">Create an account</a>
+                                            </div>
+
+                                            <div class="signin-form pt-5 text-left">
+                                                <h2 class="form-title">Sign In</h2>
+                                                <form method="POST" class="register-form" id="login-form">
                                                     <div class="form-group">
-                                                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                                        <input type="text" name="username" id="username" placeholder="Username" required/>
+                                                        <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                                        <input type="email" name="email" id="email" placeholder="Your Email"/>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                                        <input type="text" name="name" id="name" placeholder="Your Name" required/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                                        <input type="email" name="email" id="email" placeholder="Your Email" required/>
-                                                    </div>
+
                                                     <div class="form-group">
                                                         <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                                        <input type="password" name="pass" id="pass" placeholder="Password" required/>
+                                                        <input type="password" name="pass" id="pass" placeholder="Password"/>
+                                                        
                                                     </div>
+
+                                                    <!-- <div>
+                                                        <span>
+                                                            <a href="#" class="forget_pw">Forget Password?</a>
+                                                        </span>
+                                                    </div> -->
+                                                    
                                                     <div class="form-group">
-                                                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                                        <input type="password" name="re_pass" id="re_pass" placeholder="Confirm your password" required/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <!-- <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                                        <label for="agree-term" class="label-agree-term" style="font-size:x-small;"><span><span></span></span>
-                                                            I agree all statements in  <a href="#" class="term-service">Terms of service</a></label> -->
+                                                        <!-- <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                                        <label for="remember-me" class="label-agree-term" style="font-size: x-small;"><span><span></span></span>Remember me</label> -->
                                                         <span id="message"></span>
                                                     </div>
                                                     <div class="form-group form-button">
-                                                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                                        <!-- <a href="index.html">
+                                                            <input type="submit" name="signin" id="signin" class="form-submit" 
+                                                            value="Log in" />
+                                                        </a> -->
+
+                                                        <form action="index.html">
+                                                            <input type="submit" name="signin" id="signin" class="form-submit" 
+                                                            value="Log in" />
+                                                        </form>
                                                     </div>
                                                 </form>
-                                            </div>
-                                            <div class="signup-image">
-                                                <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                                                <a href="login.html" class="signup-image-link">I already have an account</a>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
+                                
                             </div>
-
                         </div>
                     </div> <!-- end of col -->
                 </div> <!-- end of row -->
@@ -144,37 +145,26 @@
     </header> <!-- end of header -->
     <!-- end of header -->
 
-    <script>
-        $('#pass, #re_pass').on('keyup', function () {
-
-            if ((($('#pass').val()).length) >= 6) {
-                if ($('#pass').val() == $('#re_pass').val()) {
-                    $('#message').hide();
-                } else {
-                    $('#message').html('Password entered does not match').css('color', 'red').show();
-                }
-            }
-            else {
-                $('#message').html('Password needs to be at least 6 characters long.').css('color', 'red').show();
-            }
-        
-        });
-    </script>
-
     <!-- Scripts -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="js/bootstrap.min.js"></script> 
-    <!-- Bootstrap framework -->
+    <!--Bootstrap framework -->
     
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
     <!-- Don't change the format for any other products. -->
     <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
     <script src="js/database.js"></script>
-    <script src="js/register.js"></script>
-    
-   
+    <script src="js/login.js"></script>       
+      
 
 </body>
 </html>
+
+<script>
+
+
+    
+</script>
+
+
