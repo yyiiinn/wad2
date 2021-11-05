@@ -104,6 +104,10 @@
 //       "<img src='images/spotify_pc.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
 //     "</a>";
 //   }
+const uid = sessionStorage.getItem('uid');
+if(uid == null){
+    window.location.href = "index.html"; 
+}
 date = localStorage.getItem("dateField");
 if(date == null){
     $('#entryText').text(''); 
