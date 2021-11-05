@@ -6,6 +6,7 @@ function logout() {
         // console.log('Signed Out');
 
         sessionStorage.removeItem('navbar');
+        sessionStorage.removeItem('uid');
 
         window.location.href = "index.html";  
 

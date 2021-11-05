@@ -29,6 +29,10 @@ $(function () {
     }
     getDiary().then(result => {
         console.log(result) //db results
+        if(result.length == 0){
+            $('.showStats').css("display", "none")
+        }
+        else{
         posResult = []; 
         negResult = [];
         NeuResult = [];
@@ -138,6 +142,7 @@ $(function () {
         callMonkeyLearn(moodArray)
         createTracker(stressSeries, anxietySeries, result.length) 
         sleepTracker(sleepArray, result.length)
+    }
 })
 });
 
