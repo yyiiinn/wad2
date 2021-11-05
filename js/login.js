@@ -17,12 +17,14 @@ $(document).ready(function() {
         // })
         .then((userCred) => {
 
+            $('#message').html('Login is successful!').css('color', 'green').show();   
+
             console.log(userCred);
             
-            myStorage = window.localStorage;
             myStorage = window.sessionStorage;
             sessionStorage.setItem('uid', userCred.user.uid);
             sessionStorage.setItem('navbar', "loginNavBar.html");
+            // console.log(sessionStorage)
 
             const usersRef = firebase.firestore().collection("Users");
             usersRef.get().then((snapshot) => {
@@ -32,23 +34,16 @@ $(document).ready(function() {
                         var username = doc.data().username
                         var name = doc.data().name
 
-                        localStorage.setItem('username',username)
-                        localStorage.setItem('name',name)
-                        localStorage.setItem('email',email)
+                        document.cookie = "username=" + username
+                        document.cookie = "name=" + name
+                        document.cookie = "email=" + email
+
+                        console.log(document.cookie)
+
+                        window.location.href = "index.html";  
                     }
                 })
             })
-
-            console.log(localStorage)
-            console.log(sessionStorage)
-
-            $('#message').html('Login is successful!').css('color', 'green').show();   
-            // window.location.assign("../web/"); setTimeout(undefined, 5000);
-    
-            // window.open("index.html");
-            window.location.href = "index.html";  
-
-
         })
         .catch(function(err) {
             if (err.code == "auth/wrong-password") {
@@ -60,10 +55,4 @@ $(document).ready(function() {
         })
     })
 })
-
-
-
-
-
-
 
