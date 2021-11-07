@@ -22,9 +22,24 @@ $(document).ready(function() {
             console.log(userCred);
             
             myStorage = window.sessionStorage;
+            sessionStorage.setItem('email', email)
             sessionStorage.setItem('uid', userCred.user.uid);
             sessionStorage.setItem('navbar', "loginNavBar.html");
             // console.log(sessionStorage)
+
+            const spotifyRefs = firebase.firestore().collection("Spotify");
+            spotifyRefs.get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    if (email == doc.data().email) {
+                        console.log(doc.data().song)
+                        var song = doc.data().song
+
+                        document.cookie = 'song=' + song
+
+                        console.log(document.cookie)
+                    }
+                })
+            })
 
             const usersRef = firebase.firestore().collection("Users");
             usersRef.get().then((snapshot) => {

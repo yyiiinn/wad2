@@ -42,6 +42,7 @@
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+    <link href="css/save_playlist.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
 	
@@ -84,19 +85,21 @@
             height: 100%;
 
             padding-bottom: 180px;
-       }
+        }
 
-       @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
+
+        
      </style>
 </head>
 
@@ -119,82 +122,53 @@
         
             <div class="row">
 
-                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                <div class="col-lg-6 mt-3 d-flex justify-content-center">
                     <iframe id="playlist1" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
 
-                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                <div class="col-lg-6 pt-2 pb-4 d-flex justify-content-center align-items-center">
+                    <button type="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Playlist Saved." class="button-56 text-wrap" id="playlist_1" onclick="get_song_1()">
+                        Add to "Recommended playlist for the day"
+                    </button>
+                </div>
+            
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mt-3 d-flex justify-content-center">
                     <iframe id="playlist2" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
 
-                <div class="col-lg-4 mt-3 d-flex justify-content-center">
+                <div class="col-lg-6 pt-2 pb-4 d-flex justify-content-center align-items-center">
+                    <button type="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Playlist Saved." class="button-56 text-wrap" id="playlist_2" onclick="get_song_2()">
+                        Add to "Recommended playlist for the day"
+                    </button>
+                </div>
+            
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mt-3 d-flex justify-content-center">
                     <iframe id="playlist3" width="370" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
-                
+
+                <div class="col-lg-6 pt-2 pb-4 d-flex justify-content-center align-items-center">
+
+                    <button type="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Playlist Saved." class="button-56 text-wrap" id="playlist_3" onclick="get_song_3()">
+                        Add to "Recommended playlist for the day"
+                    </button>
+                </div>
             </div> 
-
-             
-
         </div> 
-
     </div> 
 
-    
-
+    <!-- Popovers -->
     <script>
-
-        var playlist_arr = [
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWYBO1MoTDhZI",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWUAZoWydCivZ",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX1IeqVkK7Ebc",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2QWdoTGeQgx",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DXa1BeMIGX5Du",
-        "https://open.spotify.com/embed/playlist/1XRPDjvRdNh8cnDB0UlVYS",
-        "https://open.spotify.com/embed/playlist/5TTmUXMKK07ZuQ4RCBEwO4",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWTx0xog3gN3q",
-        "https://open.spotify.com/embed/playlist/2rN3mSrzUcgjlj1TcEDTX7",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWZCkamcYMQkz",
-        "https://open.spotify.com/embed/playlist/7AZuDiVAVNfBQCI1cnUfMX",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWU0ScTcjJBdj",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX2TRYkJECvfC",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX9XIFQuFvzM4",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DWXRvPx3nttRN",
-        "https://open.spotify.com/embed/playlist/37i9dQZF1DX18vEkgMAyAR",
-        ];
-
-
-        var nums = [];
-        for (let i in playlist_arr) {
-            nums.push(i);
-        }
-        console.log(nums); /* ['0', '1', '2', '3', '4', '5', '6', '7', '8'] */
-
-        var rand_playlist_index = [];
-        j = nums.length;
-        k = 0;
-        while (j--) {
-            k = Math.floor(Math.random() * (j+1));
-            rand_playlist_index.push(nums[k]);
-            nums.splice(k,1);
-        }
-        console.log(rand_playlist_index); 
-
-        var rand_playlist = [];
-        for (let index of rand_playlist_index) {
-            rand_playlist.push(playlist_arr[index])
-        }
-        console.log(rand_playlist);
-
-
-        document.getElementById('playlist1').src = rand_playlist[0];
-        document.getElementById('playlist2').src = rand_playlist[1];
-        document.getElementById('playlist3').src = rand_playlist[2];
-
-     
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+        })
     </script>
-
-
 
     <!-- Scripts -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
@@ -207,6 +181,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
     <script src="js/database.js"></script>
     <script src="js/login.js"></script>  
+    <script src="js/spotify.js"></script>  
+    <script src="js/cookies.js"></script>  
 
     
 </body>
