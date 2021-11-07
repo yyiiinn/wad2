@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Website Title -->
-    <title>Count On Me - Diary Entry</title>
+    <title>Count On Me - Video Call</title>
     <link rel="icon" href="images/hand_heart.png">
     <link rel='stylesheet' type='text/css' href='css/video-call.css'/>
 	
@@ -22,16 +22,26 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <script src="css/video-call.css"></script>
 
-    <!-- navbar -->
-    <div id="nav-placeholder"></div>
-    <script>
-        $(function(){
-            $("#nav-placeholder").load("navbar.html");
-        });
-    </script>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".fixed-top"> 
+  <div id="nav-placeholder"></div>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      const nav = sessionStorage.getItem('navbar');
+      if (nav == null) {
+        $("#nav-placeholder").load("navbar.html");
+      }
+      else {
+        $("#nav-placeholder").load(nav);
+      }
+
+    });
+  </script>
+
+  <br><br><br>
+
   <h2>1. Start your Webcam</h2>
   <div class="videos">
     <span>
