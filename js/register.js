@@ -12,31 +12,39 @@ $(document).ready(function() {
         var password = $("#pass").val();
         var re_pass = $("#re_pass").val();
 
-        if (re_pass === password) {
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(function(user) {
-                let data = {
-                    email: email,
-                    username: username,
-                    name: name
-                };
-
-                usersRef.doc(email).set(data);  //for this, i feel can use email as the uid so that we can identify user easily
-
-                $('#message').html('<p style="color:green;">You have successfully registered. Click <a href="login.html">here</a> to login </p>').show();   
-            })
-            .catch(function(err) {
-                if (err.code == "auth/invalid-email") {
-                    $('#message').html('You have entered an invalid email').css('color', 'red').show();   
-                } else if (err.code == "auth/email-already-in-use") {
-                    $('#message').html('The email provided has already registered').css('color', 'red').show();   
-                }
-            })
-        } else {
-            // error message for mismatch password and re_pass
-            $('#message').html('Password entered does not match').css('color', 'red').show();   
-        }
-
+        usersRef.where("username", "==", username).get().then((doc) => {
+            if(!doc.empty) {
+                $('#message').html('Username is already taken!').css('color', 'red').show(); 
+            }
+            else{
+                //sign up the user     
+                if (re_pass === password) {
+                    firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(function(user) {
+                        let data = {
+                            email: email,
+                            username: username,
+                            name: name
+                        };
+        
+                        usersRef.doc(email).set(data);  //for this, i feel can use email as the uid so that we can identify user easily
+        
+                        $('#message').html('<p style="color:green;">You have successfully registered. Click <a href="login.html">here</a> to login </p>').show();    
+                    })
+                    .catch(function(err) {
+                        if (err.code == "auth/invalid-email") {
+                            $('#message').html('You have entered an invalid email').css('color', 'red').show();   
+                        } else if (err.code == "auth/email-already-in-use") {
+                            $('#message').html('The email provided has already registered').css('color', 'red').show();   
+                        }
+                    })
+                } else {
+                    // error message for mismatch password and re_pass
+                    $('#message').html('Password entered does not match').css('color', 'red').show();   
+                }               
+            }
+        })
+               
         
     })
 })
