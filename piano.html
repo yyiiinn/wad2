@@ -5,21 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services.">
-  <meta name="author" content="Inovatik">
-
-  <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-  <meta property="og:site_name" content="" /> <!-- website name -->
-  <meta property="og:site" content="" /> <!-- website link -->
-  <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
-  <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
-  <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
-  <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
-  <meta property="og:type" content="article" />
-
   <!-- Website Title -->
-  <title>Count On Me - Home</title>
+  <title>Count On Me - Piano</title>
   <link rel="icon" href="images/hand_heart.png">
 
   <!-- Styles -->
@@ -65,13 +52,22 @@
     });
   </script>
 
+  <br><br><br>
+
   <section id="wrap">
     <header>
-      <h1 class="text-center">JS Piano</h1>
-      <h2 class="text-center">Use your keyboard. Hover for hints.</h2>
+      <h3 class="text-center explanation">Use your keyboard. Hover for hints.</h3>
     </header>
     <section id="main">
-      <div class="nowplaying text-center"></div>
+      <div class="row col-sm-6 mx-auto">
+        <div class="col-2 nowplaying text-center"></div>
+        <div class="col-10 playingHistory overflow-auto col-sm-6 mx-auto"></div>
+      </div>
+
+      <div class="row container-fluid justify-content-center p-0 m-0">
+        <button class=" btn btn-primary mx-2" onclick="playHistory()">Play History</button>
+        <button class="btn btn-danger mx-2" onclick="clearHistory()">Clear History</button>
+      </div>
       <div class="keys">
         <div data-key="65" class="key" data-note="C">
           <span class="hints">A</span>
@@ -121,39 +117,39 @@
         <div data-key="80" class="key sharp" data-note="D#">
           <span class="hints">P</span>
         </div>
-        <div data-key="59" class="key" data-note="E">
+        <div data-key="186" class="key" data-note="E">
           <span class="hints">;</span>
         </div>
       </div>
 
-      <audio data-key="65" src="http://carolinegabriel.com/demo/js-keyboard/sounds/040.wav"></audio>
-      <audio data-key="87" src="http://carolinegabriel.com/demo/js-keyboard/sounds/041.wav"></audio>
-      <audio data-key="83" src="http://carolinegabriel.com/demo/js-keyboard/sounds/042.wav"></audio>
-      <audio data-key="69" src="http://carolinegabriel.com/demo/js-keyboard/sounds/043.wav"></audio>
-      <audio data-key="68" src="http://carolinegabriel.com/demo/js-keyboard/sounds/044.wav"></audio>
-      <audio data-key="70" src="http://carolinegabriel.com/demo/js-keyboard/sounds/045.wav"></audio>
-      <audio data-key="84" src="http://carolinegabriel.com/demo/js-keyboard/sounds/046.wav"></audio>
-      <audio data-key="71" src="http://carolinegabriel.com/demo/js-keyboard/sounds/047.wav"></audio>
-      <audio data-key="89" src="http://carolinegabriel.com/demo/js-keyboard/sounds/048.wav"></audio>
-      <audio data-key="72" src="http://carolinegabriel.com/demo/js-keyboard/sounds/049.wav"></audio>
-      <audio data-key="85" src="http://carolinegabriel.com/demo/js-keyboard/sounds/050.wav"></audio>
-      <audio data-key="74" src="http://carolinegabriel.com/demo/js-keyboard/sounds/051.wav"></audio>
-      <audio data-key="75" src="http://carolinegabriel.com/demo/js-keyboard/sounds/052.wav"></audio>
-      <audio data-key="79" src="http://carolinegabriel.com/demo/js-keyboard/sounds/053.wav"></audio>
-      <audio data-key="76" src="http://carolinegabriel.com/demo/js-keyboard/sounds/054.wav"></audio>
-      <audio data-key="80" src="http://carolinegabriel.com/demo/js-keyboard/sounds/055.wav"></audio>
-      <audio data-key="59" src="http://carolinegabriel.com/demo/js-keyboard/sounds/056.wav"></audio>
+      <audio data-key="65" src="audio/C.wav"></audio>
+      <audio data-key="87" src="audio/Csharp.wav"></audio>
+      <audio data-key="83" src="audio/D.wav"></audio>
+      <audio data-key="69" src="audio/Dsharp.wav"></audio>
+      <audio data-key="68" src="audio/E.wav"></audio>
+      <audio data-key="70" src="audio/F.wav"></audio>
+      <audio data-key="84" src="audio/Fsharp.wav"></audio>
+      <audio data-key="71" src="audio/G.wav"></audio>
+      <audio data-key="89" src="audio/Gsharp.wav"></audio>
+      <audio data-key="72" src="audio/A.wav"></audio>
+      <audio data-key="85" src="audio/Asharp.wav"></audio>
+      <audio data-key="74" src="audio/B.wav"></audio>
+      <audio data-key="75" src="audio/C2.wav"></audio>
+      <audio data-key="79" src="audio/C2sharp.wav"></audio>
+      <audio data-key="76" src="audio/D2.wav"></audio>
+      <audio data-key="80" src="audio/D2sharp.wav"></audio>
+      <audio data-key="186" src="audio/E2.wav"></audio>
     </section>
   </section>
-  <div class="container-fluid">
-    <div class="row">
-      
-    </div>
+  <div class="container-fluid pt-3">
 
     <div class="row">
       <div class="col">
         <div class="row justify-content-center">
           <h3>Your Saved Music</h3>
+        </div>
+        <div class="row">
+
         </div>
       </div>
       <div class="col">
@@ -167,7 +163,6 @@
 
 
   <!-- Scripts -->
-  <script src="js/piano.js"></script>
   <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
   <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
   <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
@@ -185,7 +180,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
   <script src="js/database.js"></script>
   <script src="js/login.js"></script>
-
+  <script src="js/piano.js"></script>
 </body>
 
 </html>
