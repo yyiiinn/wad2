@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>Count On Me - Video</title>
+    <link rel="icon" href="images/hand_heart.png">
+    <link rel='stylesheet' type='text/css' href='css/video-call.css'/>
+	
+    <!-- Script -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+
+</head>
+
+<body data-spy="scroll" data-target=".fixed-top"> 
+    <div id="nav-placeholder"></div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+        const nav = sessionStorage.getItem('navbar');
+        if (nav == null) {
+            $("#nav-placeholder").load("navbar.html");
+        }
+        else {
+            $("#nav-placeholder").load(nav);
+        }
+
+        });
+    </script>
+
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <h3>Want to find someone to talk to? Look through the list below to join any ongoing video chat!</h3>
+            <br>
+            <h3>Or you could create your own video chat and post here! &nbsp;</h3> 
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create Post</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        <div class="form-group">
+                            <label for="call-id" class="col-form-label">Call ID:</label>
+                            <input type="text" class="form-control" id="call-id">
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description"></textarea>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button onclick="createPost()" type="button" class="btn btn-primary">Create</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-12">
+                <table class="table" id="video-post">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Call ID</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Join now</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="video-post-body">
+                      <tr>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Insert button to redirect to video-call.html</td>
+                        <td>On-going, In-call, Ended</td> 
+                      </tr>
+                      <tr>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/bootstrap.min.js"></script> 
+    <!-- Bootstrap framework -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+    <!-- Don't change the format for any other products. -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+    <script src="js/video.js"></script>
+    <script src="js/database.js"></script>
+    <!-- <script src="js/video-call.js"></script> -->
+</body>
+</html>
