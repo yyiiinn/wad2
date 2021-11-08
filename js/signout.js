@@ -7,6 +7,7 @@ function logout() {
 
         sessionStorage.removeItem('navbar');
         sessionStorage.removeItem('uid');
+        sessionStorage.removeItem('email');
 
         window.location.href = "index.html";  
 
