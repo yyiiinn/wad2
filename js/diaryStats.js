@@ -31,8 +31,15 @@ $(function () {
         console.log(result) //db results
         if(result.length == 0){
             $('.showStats').css("display", "none")
+            $('#diaryTitle').text('View My Diary')
         }
         else{
+            if(result.length == 1){
+                $('#diaryTitle').text('View My Diary (' + result.length + ' Entry)' )
+            }
+            else{
+                $('#diaryTitle').text('View My Diary (' + result.length + ' Entries)' )
+            }
         posResult = []; 
         negResult = [];
         NeuResult = [];
