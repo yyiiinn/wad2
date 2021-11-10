@@ -42,27 +42,119 @@
 
   <br><br><br>
 
-  <h2>1. Start your Webcam</h2>
-  <div class="videos">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="videos">
+          <span>
+            <h3>Local Stream (You) -> insert name</h3>
+            <video id="webcamVideo" autoplay playsinline></video>
+          </span>
+          <span>
+            <h3>Remote Stream (Other People) -> insert name</h3>
+            <video id="remoteVideo" autoplay playsinline></video>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card text-center">
+          <div class="card-header">
+            Menu
+          </div>
+          <div class="card-body">
+            <!-- <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <p>Click here to start your web cam:</p>
+                <button id="webcamButton" class="btn btn-primary">Start webcam</button>
+              </li>
+              <li class="list-group-item">
+                <p>Click here to start a call: (will only be activated after you start your webcam)</p>
+                <button id="callButton" disabled>Create Call (offer)</button>
+              </li>
+              <li class="list-group-item">
+                <p>Generated Call ID:</p>
+                <input id="callInput" />
+              </li>
+              <li class="list-group-item"> <!-- try div col! -->
+                <p>Copy your Call ID and post it to get others to join you!</p>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#getModal" data-whatever="@mdo">Create Post</button>
+              </li>
+              <li class="list-group-item">
+                <p>Hang up your call here:</p>
+                <button id="hangupButton" disabled>Hangup</button>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+        <!-- <span>
+          <button id="webcamButton" style="height:50px; width:400px;">Start webcam</button>
+        </span> -->
+      </div>
+      <div class="col-11"></div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="getModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">New Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="form-group">
+                <label for="call-id" class="col-form-label">Call ID:</label>
+                <input type="text" class="form-control" id="call-id">
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-form-label">Description:</label>
+                <textarea class="form-control" id="description"></textarea>
+            </div>
+            </form>
+            <span id="message"></span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="createPost" type="button" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- <div class="videos">
     <span>
-      <h3>Local Stream</h3>
+      <h3>Local Stream (You) -> insert name</h3>
       <video id="webcamVideo" autoplay playsinline></video>
     </span>
     <span>
-      <h3>Remote Stream</h3>
+      <h3>Remote Stream (Other People) -> insert name</h3>
       <video id="remoteVideo" autoplay playsinline></video>
     </span>
-
-
   </div>
-
-  <button id="webcamButton">Start webcam</button>
+  <div>
+    <h2>Menu</h2>
+  </div>
+   -->
   <h2>2. Create a new Call</h2>
   <button id="callButton" disabled>Create Call (offer)</button>
 
-  <h2>3. Join a Call</h2>
-  <p>Answer the call from a different browser window or device</p>
-  
+  <p>Copy and paste your call id here to get others to join you!</p>
   <input id="callInput" />
   <button id="answerButton" disabled>Answer</button>
 

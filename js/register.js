@@ -27,7 +27,7 @@ $(document).ready(function() {
                             name: name
                         };
         
-                        usersRef.doc(email).set(data);  //for this, i feel can use email as the uid so that we can identify user easily
+                        usersRef.doc(email).set(data);
         
                         $('#message').html('<p style="color:green;">You have successfully registered. Click <a href="login.html">here</a> to login </p>').show();    
                     })

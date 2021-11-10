@@ -1,12 +1,21 @@
-/**
-Note: if running this function in chrome, a bug called 
-Uncaught (in promise) DOMException: Failed to execute 'addIceCandidate' on 'RTCPeerConnection': Error processing ICE candidate
-will be shown on the console. This is a known error on chrome so if you run our application in another browser (eg. safari), 
-this error will be gone.
- */
-
 firebase.initializeApp(firebaseConfig);
-const firestore = firebase.firestore();
+
+const videoRefs = firebase.firestore().collection("VideoPost");
+const userRefs = firebase.firestore().collection("Users");
+var email = sessionStorage.getItem('email');
+
+async function getNameByEmail(email){
+  await userRefs.doc(email).get()
+  .then(snapshot => {
+    var name = ""
+    if(email == undefined || snapshot.data() == undefined || email != snapshot.data().email){
+      console.log(snapshot);
+    }
+    else{
+      this.name = snapshot.data().name;
+    }
+  })
+}
 
 // create global variables for peer connection and video streams
 const servers = {
@@ -60,48 +69,50 @@ webcamButton.onclick = async () => {
 
 // Creating a call
 callButton.onclick = async () => {
+  // add a confirm message to see if the user really wants to create a call
+
   // Reference Firestore collections for signaling
-    const callDoc = firestore.collection('calls').doc();
-    const offerCandidates = callDoc.collection('offerCandidates');
-    const answerCandidates = callDoc.collection('answerCandidates');
+  const callDoc = firebase.firestore().collection('calls').doc();
+  const offerCandidates = callDoc.collection('offerCandidates');
+  const answerCandidates = callDoc.collection('answerCandidates');
   
-    callInput.value = callDoc.id;
+  callInput.value = callDoc.id;
   
-    // Get candidates for caller, save to db
-    pc.onicecandidate = event => {
-      event.candidate && offerCandidates.add(event.candidate.toJSON());
-    };
+  // Get candidates for caller, save to db
+  pc.onicecandidate = event => {
+    event.candidate && offerCandidates.add(event.candidate.toJSON());
+  };
   
-    // Create offer
-    const offerDescription = await pc.createOffer();
-    await pc.setLocalDescription(offerDescription);
+  // Create offer
+  const offerDescription = await pc.createOffer();
+  await pc.setLocalDescription(offerDescription);
   
-    const offer = {
-      sdp: offerDescription.sdp,
-      type: offerDescription.type,
-    };
+  const offer = {
+    sdp: offerDescription.sdp,
+    type: offerDescription.type,
+  };
   
-    await callDoc.set({ offer });
+  await callDoc.set({ offer });
   
-    // Listen for remote answer
-    callDoc.onSnapshot((snapshot) => {
-      const data = snapshot.data();
-      if (!pc.currentRemoteDescription && data?.answer) {
-        const answerDescription = new RTCSessionDescription(data.answer);
-        pc.setRemoteDescription(answerDescription);
+  // Listen for remote answer
+  callDoc.onSnapshot((snapshot) => {
+    const data = snapshot.data();
+    if (!pc.currentRemoteDescription && data?.answer) {
+      const answerDescription = new RTCSessionDescription(data.answer);
+      pc.setRemoteDescription(answerDescription);
+    }
+  });
+  
+  // Listen for remote ICE candidates
+  answerCandidates.onSnapshot(snapshot => {
+    snapshot.docChanges().forEach((change) => {
+      if (change.type === 'added') {
+        const candidate = new RTCIceCandidate(change.doc.data());
+        pc.addIceCandidate(candidate);
       }
     });
-  
-    // Listen for remote ICE candidates
-    answerCandidates.onSnapshot(snapshot => {
-      snapshot.docChanges().forEach((change) => {
-        if (change.type === 'added') {
-          const candidate = new RTCIceCandidate(change.doc.data());
-          pc.addIceCandidate(candidate);
-        }
-      });
-    });
-    hangupButton.disabled = false;
+  });
+  hangupButton.disabled = false;
 };
 
 // answer a call
@@ -148,4 +159,23 @@ answerButton.onclick = async () => {
 hangupButton.onclick = async() => {
   pc.close();
   pc = null;
+  window.location.href = "video-call.html";
 }
+
+createPost.onclick = async() => {
+  var callId = document.getElementById("call-id").value
+  var description = document.getElementById("description").value
+  getNameByEmail(this.email)
+
+  let data = {
+    name: this.name,
+    call_id: callId,
+    description: description,
+    email: this.email,
+    status: "on-going"
+  }
+  videoRefs.add(data); 
+
+  $('#message').html('<p style="color:green;">You have successfully posted.').show();    
+}
+
