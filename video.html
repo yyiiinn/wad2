@@ -40,41 +40,10 @@
     </script>
 
     <br><br><br>
+    <br><br>
     <div class="container">
         <div class="row">
-            <h3>Want to find someone to talk to? Look through the list below to join any ongoing video chat!</h3>
-            <br>
-            <h3>Or you could create your own video chat and post here! &nbsp;</h3> 
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create Post</button>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                        <div class="form-group">
-                            <label for="call-id" class="col-form-label">Call ID:</label>
-                            <input type="text" class="form-control" id="call-id">
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="col-form-label">Description:</label>
-                            <textarea class="form-control" id="description"></textarea>
-                        </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button onclick="createPost()" type="button" class="btn btn-primary">Create</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
+            <h3>Want to find someone to talk to? Look through the list below to copy and paste the call id <a href="./video-call.html">here</a></h3>
         </div>
         <br>
         <div class="row">
@@ -86,12 +55,11 @@
                         <th scope="col">Name</th>
                         <th scope="col">Call ID</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Join now</th>
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody id="video-post-body">
-                      <tr>
+                      <!-- <tr>
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>@fat</td>
@@ -104,7 +72,7 @@
                         <td>@twitter</td>
                         <td></td>
                         <td></td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -121,8 +89,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
     <!-- Don't change the format for any other products. -->
     <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
-    <script src="js/video.js"></script>
     <script src="js/database.js"></script>
+    <script src="js/video.js"></script>
     <!-- <script src="js/video-call.js"></script> -->
 </body>
 </html>
