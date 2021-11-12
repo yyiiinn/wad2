@@ -211,6 +211,12 @@ createPost.onclick = async() => {
     console.log("Error adding data: ", error)
   }); 
 
-  $('#message').html('<p style="color:green;">You have successfully posted.').show();    
+  $('#message').html('<p style="color:green;">You have successfully posted.').show();   
+  
+}
+
+closeModal.onclick = async() => {
+  $("#post-form").trigger("reset");
+  $('#message').hide(); 
 }
 
