@@ -19,8 +19,6 @@ async function getAllVideos() {
         var callInput = document.createElement("input");
         callInput.setAttribute("id", doc.data().call_id);
         callInput.setAttribute("value", doc.data().call_id);
-        // var callIDdata = document.createTextNode(doc.data().call_id);
-        // callInput.appendChild(callIDdata);
         callID.appendChild(callInput);
 
         var button = document.createElement("button");
@@ -31,13 +29,10 @@ async function getAllVideos() {
 
           /* Select the text field */
           copyText.select();
-          // copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
+          
           /* Copy the text inside the text field */
           navigator.clipboard.writeText(copyText.value);
 
-          /* Alert the copied text */
-          // alert("Copied the text: " + copyText.value);
         };
 
         callID.appendChild(button);
