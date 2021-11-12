@@ -47,11 +47,11 @@
       <div class="col">
         <div class="videos">
           <span>
-            <h3>Local Stream (You) -> insert name</h3>
+            <h3>Local Stream (You)</h3>
             <video id="webcamVideo" autoplay playsinline></video>
           </span>
           <span>
-            <h3>Remote Stream (Other People) -> insert name</h3>
+            <h3>Remote Stream (Other People)</h3>
             <video id="remoteVideo" autoplay playsinline></video>
           </span>
         </div>
@@ -80,9 +80,18 @@
                 <p>Generated Call ID:</p>
                 <input id="callInput" />
               </li>
-              <li class="list-group-item"> <!-- try div col! -->
-                <p>Copy your Call ID and post it to get others to join you!</p>
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#getModal" data-whatever="@mdo">Create Post</button>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-6">
+                    <p>Copy your Call ID and post it to get others to join you!</p>
+                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#getModal" data-whatever="@mdo">Create Post</button>
+                  </div>
+                  <div class="col-6">
+                    <p>Copy other's Call ID code to paste here</p>
+                    <input id="answerInput" /><br><br>
+                    <button id="answerButton" disabled>Answer</button>
+                  </div>
+                </div>
               </li>
               <li class="list-group-item">
                 <p>Hang up your call here:</p>

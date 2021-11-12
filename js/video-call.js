@@ -3,11 +3,12 @@ firebase.initializeApp(firebaseConfig);
 const videoRefs = firebase.firestore().collection("VideoPost");
 const userRefs = firebase.firestore().collection("Users");
 var email = sessionStorage.getItem('email');
+var postID = "";
 
 async function getNameByEmail(email){
   await userRefs.doc(email).get()
   .then(snapshot => {
-    var name = ""
+    var name = "";
     if(email == undefined || snapshot.data() == undefined || email != snapshot.data().email){
       console.log(snapshot);
     }
@@ -27,7 +28,7 @@ const servers = {
   iceCandidatePoolSize: 10,
 };
 
-const pc = new RTCPeerConnection(servers);
+var pc = new RTCPeerConnection(servers);
 let localStream = null;
 let remoteStream = null;
 
@@ -65,6 +66,9 @@ webcamButton.onclick = async () => {
   callButton.disabled = false;
   answerButton.disabled = false;
   webcamButton.disabled = true;
+
+  getNameByEmail(this.email)
+  console.log(this.name)
 }
 
 // Creating a call
@@ -117,8 +121,9 @@ callButton.onclick = async () => {
 
 // answer a call
 answerButton.onclick = async () => {
-  const callId = callInput.value;
-  const callDoc = firestore.collection('calls').doc(callId);
+  const callId = document.getElementById("answerInput").value;
+  console.log(callId)
+  const callDoc = firebase.firestore().collection('calls').doc(callId);
   const offerCandidates = callDoc.collection('offerCandidates');
   const answerCandidates = callDoc.collection('answerCandidates');
 
@@ -154,18 +159,42 @@ answerButton.onclick = async () => {
       }
     });
   });
+
+  if (this.postID != "") {
+    // update video post status to on-going
+    videoRefs.onSnapshot((snapshot) =>{
+      videoRefs.doc(this.postID).update({
+          status: "in-call"
+      });
+    })
+  } 
+
+  hangupButton.disabled = false;
 };
 
 hangupButton.onclick = async() => {
   pc.close();
   pc = null;
-  window.location.href = "video-call.html";
+
+  if (this.postID != "") {
+     // update video post status to ended
+    videoRefs.onSnapshot((snapshot) =>{
+      videoRefs.doc(this.postID).update({
+        status: "ended"
+      }).then(function() {
+        window.location.href = "video-call.html";
+      });
+    })
+  } else {
+    window.location.href = "video-call.html";
+  }
+ 
 }
 
 createPost.onclick = async() => {
   var callId = document.getElementById("call-id").value
   var description = document.getElementById("description").value
-  getNameByEmail(this.email)
+  console.log(this.name)
 
   let data = {
     name: this.name,
@@ -174,7 +203,13 @@ createPost.onclick = async() => {
     email: this.email,
     status: "on-going"
   }
-  videoRefs.add(data); 
+  videoRefs.add(data).then(docRef => {
+    console.log("data added with Id: ", docRef.id)  
+    this.postID = docRef.id;
+  })
+  .catch((error) => {
+    console.log("Error adding data: ", error)
+  }); 
 
   $('#message').html('<p style="color:green;">You have successfully posted.').show();    
 }
