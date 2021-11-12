@@ -1,10 +1,10 @@
 firebase.initializeApp(firebaseConfig);
-const videoRefs = firebase.firestore().collection("VideoPost");    
+const videoRefs = firebase.firestore().collection("VideoPost");
 
 var tbody = document.getElementById("video-post-body");
 
 // retrieving video posts from database
-async function getAllVideos(){
+async function getAllVideos() {
   await videoRefs.get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -15,8 +15,32 @@ async function getAllVideos(){
         name.appendChild(nameData);
 
         var callID = document.createElement("td");
-        var callIDdata = document.createTextNode(doc.data().call_id);
-        callID.appendChild(callIDdata);
+
+        var callInput = document.createElement("input");
+        callInput.setAttribute("id", doc.data().call_id);
+        callInput.setAttribute("value", doc.data().call_id);
+        // var callIDdata = document.createTextNode(doc.data().call_id);
+        // callInput.appendChild(callIDdata);
+        callID.appendChild(callInput);
+
+        var button = document.createElement("button");
+        button.innerHTML = "Copy"
+        button.onclick = function () {
+          /* Get the text field */
+          var copyText = document.getElementById(doc.data().call_id);
+
+          /* Select the text field */
+          copyText.select();
+          // copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+          /* Copy the text inside the text field */
+          navigator.clipboard.writeText(copyText.value);
+
+          /* Alert the copied text */
+          // alert("Copied the text: " + copyText.value);
+        };
+
+        callID.appendChild(button);
 
         var description = document.createElement("td");
         var descriptionData = document.createTextNode(doc.data().description);
@@ -35,7 +59,7 @@ async function getAllVideos(){
 
         // console.log(doc.id, " => ", doc.data());
       });
-  })
+    })
 };
 
 getAllVideos();
@@ -54,6 +78,6 @@ function myFunction() {
       } else {
         tr[i].style.display = "none";
       }
-    }       
+    }
   }
 }
