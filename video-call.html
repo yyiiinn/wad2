@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Website Title -->
-    <title>Count On Me - Video Call</title>
-    <link rel="icon" href="images/hand_heart.png">
-    <link rel='stylesheet' type='text/css' href='css/video-call.css'/>
-	
-    <!-- Script -->
-    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
-    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
-    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
-    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
-    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
-    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-    <script src="js/scripts.js"></script> <!-- Custom scripts -->
-    <script src="css/video-call.css"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Website Title -->
+  <title>Count On Me - Video Call</title>
+  <link rel="icon" href="images/hand_heart.png">
+  <link rel='stylesheet' type='text/css' href='css/video-call.css' />
+
+  <!-- Script -->
+  <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+  <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+  <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+  <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+  <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+  <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+  <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+  <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+  <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+  <script src="js/scripts.js"></script> <!-- Custom scripts -->
+  <script src="css/video-call.css"></script>
 
 </head>
 
-<body data-spy="scroll" data-target=".fixed-top"> 
+<body data-spy="scroll" data-target=".fixed-top">
   <div id="nav-placeholder"></div>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
@@ -65,8 +66,6 @@
             Menu
           </div>
           <div class="card-body">
-            <!-- <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <p>Click here to start your web cam:</p>
@@ -84,7 +83,8 @@
                 <div class="row">
                   <div class="col-6">
                     <p>Copy your Call ID and post it to get others to join you!</p>
-                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#getModal" data-whatever="@mdo">Create Post</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#getModal"
+                      data-whatever="@mdo">Create Post</button>
                   </div>
                   <div class="col-6">
                     <p>Copy other's Call ID code to paste here</p>
@@ -98,12 +98,9 @@
                 <button id="hangupButton" disabled>Hangup</button>
               </li>
             </ul>
-            
+
           </div>
         </div>
-        <!-- <span>
-          <button id="webcamButton" style="height:50px; width:400px;">Start webcam</button>
-        </span> -->
       </div>
       <div class="col-11"></div>
     </div>
@@ -119,67 +116,41 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="modalLabel">New Post</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title" id="modalLabel">New Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-            </button>
+          </button>
         </div>
         <div class="modal-body">
-            <form>
+          <form>
             <div class="form-group">
-                <label for="call-id" class="col-form-label">Call ID:</label>
-                <input type="text" class="form-control" id="call-id">
+              <label for="call-id" class="col-form-label">Call ID:</label>
+              <input type="text" class="form-control" id="call-id">
             </div>
             <div class="form-group">
-                <label for="description" class="col-form-label">Description:</label>
-                <textarea class="form-control" id="description"></textarea>
+              <label for="description" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="description"></textarea>
             </div>
-            </form>
-            <span id="message"></span>
+          </form>
+          <span id="message"></span>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="createPost" type="button" class="btn btn-primary">Create</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="createPost" type="button" class="btn btn-primary">Create</button>
         </div>
       </div>
     </div>
   </div>
-
-  
-  <!-- <div class="videos">
-    <span>
-      <h3>Local Stream (You) -> insert name</h3>
-      <video id="webcamVideo" autoplay playsinline></video>
-    </span>
-    <span>
-      <h3>Remote Stream (Other People) -> insert name</h3>
-      <video id="remoteVideo" autoplay playsinline></video>
-    </span>
-  </div>
-  <div>
-    <h2>Menu</h2>
-  </div>
-   -->
-  <h2>2. Create a new Call</h2>
-  <button id="callButton" disabled>Create Call (offer)</button>
-
-  <p>Copy and paste your call id here to get others to join you!</p>
-  <input id="callInput" />
-  <button id="answerButton" disabled>Answer</button>
-
-  <h2>4. Hangup</h2>
-
-  <button id="hangupButton" disabled>Hangup</button>
-
-    <!-- Scripts -->
-    <script src="js/scripts.js"></script> <!-- Custom scripts -->
-    <script src="js/bootstrap.min.js"></script> 
-    <!-- Bootstrap framework -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
-    <!-- Don't change the format for any other products. -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
-    <script src="js/database.js"></script>
-    <script src="js/video-call.js"></script>
+  <!-- Scripts -->
+  <script src="js/scripts.js"></script> <!-- Custom scripts -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Bootstrap framework -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+  <!-- Don't change the format for any other products. -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/video-call.js"></script>
 </body>
+
 </html>
