@@ -16,7 +16,7 @@ h2 {
 }
 
 .nowplaying {
-  font-size: 60px;
+  font-size: 50px;
   line-height: 1;
   text-shadow: 0 0 5rem #028ae9;
   transition: all 0.07s ease;
@@ -28,8 +28,7 @@ h2 {
   display: flex;
   flex-direction: column-reverse;
   height: 60px;
-  border-top: solid 1px black;
-  border-bottom: solid 1px black;
+  border: solid 1px black;
 }
 
 .keys {
