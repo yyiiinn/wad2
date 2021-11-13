@@ -151,10 +151,7 @@ async function loadSuggestedMusic() {
         `</p>
       <button class="btn btn-primary" onclick="playSuggested('` +
         musicName +
-        `')">Play For Me</button>
-      <button class="btn btn-secondary" onclick="playSuggested('` +
-        musicName +
-        `')">Play With Me</button>
+        `')">Play</button>
       </div>
     </div>
     </div>
