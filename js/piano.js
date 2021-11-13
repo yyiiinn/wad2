@@ -111,7 +111,7 @@ async function playHistory() {
 
 // Function to play suggested music
 async function playSuggested(musicName) {
-  musicData = suggestedMusic[musicName];
+  let musicData = suggestedMusic[musicName];
   for (const aNote of musicData['keys']) {
     await playNote(aNote);
   }
@@ -119,7 +119,7 @@ async function playSuggested(musicName) {
 
 // Function to play suggested music
 async function playSaved(musicName) {
-  musicData = savedMusic[musicName];
+  let musicData = savedMusic[musicName];
   for (const aNote of musicData['keys']) {
     await playNote(aNote);
   }
@@ -165,6 +165,33 @@ async function loadSuggestedMusic() {
   });
 }
 
+async function saveHistory() {
+  if (noteHistory.length === 0) {
+    alert('There is no music to save!');
+    return;
+  }
+  let musicName = prompt('Enter a name for your music');
+
+  if (musicName === null) {
+    return;
+  }
+
+  let musicData = {
+    name: musicName,
+    Notes: noteHistory,
+    Keys: keyHistory,
+  };
+
+  let userEmail = sessionStorage.getItem('email');
+
+  const userMusicCollection = firebase.firestore().collection('Users/' + userEmail + '/Music');
+
+  userMusicCollection.add(musicData).then(() => {
+    alert('Music saved!');
+  });
+  loadSavedMusic();
+}
+
 // Function to load saved music
 async function loadSavedMusic() {
   let userEmail = sessionStorage.getItem('email');
@@ -179,8 +206,8 @@ async function loadSavedMusic() {
     </div>`;
     return;
   }
+  document.getElementById('savedMusicList').innerHTML = '';
   userMusicSnapshot.forEach((doc) => {
-    document.getElementById('savedMusicList').innerHTML = '';
     let noteArray = doc.data().Notes ?? [];
     let keysArray = doc.data().Keys ?? [];
     let musicName = doc.data().name;
@@ -217,5 +244,3 @@ window.onload = function () {
   loadSuggestedMusic();
   loadSavedMusic();
 };
-
-console.log(localStorage);
