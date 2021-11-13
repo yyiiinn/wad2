@@ -8,6 +8,7 @@ $(document).ready(function() {
     if(uid == null){
       window.location.href = "index.html"; 
     }
+    $("#diary").css("display", "block")
     n = new Date();
     y = n.getFullYear();
     m = n.getMonth();
@@ -37,8 +38,11 @@ $(document).ready(function() {
          e.preventDefault();
          $(this).val(0);
       }
-      if (charCode != 46 && charCode != 45 && charCode > 31
-        && (charCode < 48 || charCode > 57))
+      if (e.keyCode === 190 || e.keyCode === 110) {
+        e.preventDefault();
+      }
+      if (e.keyCode != 46 && e.keyCode != 45 && e.keyCode > 31
+        && (e.keyCode < 48 || e.keyCode > 57))
          return false;
   });
   

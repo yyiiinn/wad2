@@ -19,8 +19,7 @@
     <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-	
+	<link href="css/styles.css" rel="stylesheet">	
 	<!-- Favicon  -->
    
 </head>
@@ -42,8 +41,6 @@
     <script>
         $(function(){
             const nav = sessionStorage.getItem('navbar');
-            console.log(nav);
-
             if(nav == null){
                 $("#nav-placeholder").load("navbar.html");
 
@@ -187,7 +184,7 @@
 
     <!-- display diff front-text -->
     <script>
-        console.log((document.cookie).length)
+        console.log((document.cookie))
     
         if ((document.cookie).length == 0) {
             var front_text = document.getElementById('front_text')

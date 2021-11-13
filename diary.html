@@ -23,7 +23,7 @@
 
     <!-- navbar -->
     <div id="nav-placeholder"></div>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
     <script>
       $(function(){
         const nav = sessionStorage.getItem('navbar');
@@ -39,9 +39,9 @@
 </head>
    
     <!-- Diary -->
-    <body>
+    <body data-spy="scroll" data-target=".fixed-top">
     <br>
-    <div id="diary">
+    <div id="diary" style="display:none;">
 		<div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -65,9 +65,9 @@
           <div class="form-group">
             <label for="sleep" style="color: black;">How many hours have you slept for today?</label>
             <label id="sleepCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
-            <div class="form-inline row form-group" style="width:100%;">
+            <div class="form-inline flex-nowrap row form-group" style="width:100%;">
               <input id="sleepField" type="number" placeholder="Enter a number between 0 to 24" class="form-control ml-3" id="sleep" min="0" max="24" style="width:80%;">
-            <label for="sleep" style="display:content; padding-left:5px;">Hours</label></div>
+            <label for="sleep" style="display:content;padding-left:5px;">Hours</label></div>
           </div>
           <br>
           <label for="stress" style="color: black;">Stress Tracker</label>
@@ -140,14 +140,6 @@
             <br><br>
 
             <button onclick="submitEntry()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the buttons below for some good music or soul-filling podcasts." style="width:100%;">SAVE MY DIARY</button>
-
-            <!-- <div class="row">
-              <div id="spotify_btn" class="col-md d-flex justify-content-center">
-              </div>
-
-              <div id="podcast_btn" class="col-md d-flex justify-content-center">
-              </div>
-            </div> -->
           </div>
         </form>
     </div>
@@ -170,31 +162,5 @@
 <!-- Don't change the format for any other products. -->
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
 <script src="js/database.js"></script>
-
-<!-- spotify playlist & podcasts pop-up botton -->
-<!-- <script>
-  function sptfy_btn() {
-    // console.log(event.target);
-    var spotify_btn = document.getElementById('spotify_btn');
-    spotify_btn.innerHTML = 
-    "<a href='spotify.html'>" +
-      "<img src='images/spotify_btn.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
-    "</a>";
-
-    var podcast_btn = document.getElementById('podcast_btn');
-    podcast_btn.innerHTML = 
-    "<a href='podcast.html'>" +
-      "<img src='images/spotify_pc.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
-    "</a>";
-  }
-  
-</script> -->
-
-<!-- pop-up -->
-<!-- <script>
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  })
-</script> -->
 
 

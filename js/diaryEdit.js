@@ -52,6 +52,7 @@ $(document).ready(function() {
         var $stress = result.stress
         $("input[name='stress'][value='"+$stress+"']").attr('checked', true);
         $("input[name='anxiety'][value='"+$anxiety+"']").attr('checked', true);
+        $("#diary").css("display", "block")
     })   
     $('#sleepField').on('keydown keyup change', function(e){
       if ($(this).val() > 24 
@@ -68,8 +69,11 @@ $(document).ready(function() {
          e.preventDefault();
          $(this).val(0);
       }
-      if (charCode != 46 && charCode != 45 && charCode > 31
-        && (charCode < 48 || charCode > 57))
+      if (e.keyCode === 190 || e.keyCode === 110) {
+        e.preventDefault();
+      }
+      if (e.keyCode != 46 && e.keyCode != 45 && e.keyCode > 31
+        && (e.keyCode < 48 || e.keyCode > 57))
          return false;
   });
   

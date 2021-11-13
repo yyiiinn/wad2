@@ -7,7 +7,7 @@
     <!-- Website Title -->
     <title>Count On Me - Diary Entry</title>
     <link rel="icon" href="images/hand_heart.png">
-    <link rel="stylesheet" href="alert/dist/sweetalert.css">
+    <!-- <link rel="stylesheet" href="alert/dist/sweetalert.css"> -->
     <!-- Script -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
@@ -21,17 +21,9 @@
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
     <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
 
-    <!-- Preloader -->
-    <!-- <div class="spinner-wrapper">
-      <div class="spinner">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
-      </div>
-    </div> -->
     <!-- navbar -->
     <div id="nav-placeholder"></div>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
     <script>
         $(function(){
           const nav = sessionStorage.getItem('navbar');
@@ -47,7 +39,7 @@
 </head>
    
     <!-- Diary -->
-    <body>
+    <body data-spy="scroll" data-target=".fixed-top">
     <br>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -69,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div id="diary">
+    <div id="diary" style="display:none;">
 		<div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -93,7 +85,7 @@
           <div class="form-group">
             <label for="sleep" style="color: black;">How many hours have you slept for today?</label>
             <label id="sleepCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
-            <div class="form-inline row form-group" style="width:100%;">
+            <div class="form-inline flex-nowrap row form-group" style="width:100%;">
               <input id="sleepField" type="number" placeholder="Enter a number between 0 to 24" class="form-control ml-3" id="sleep" min="0" max="24" style="width:80%;">
             <label for="sleep" style="display:content; padding-left:5px;">Hours</label></div>
           </div>
@@ -185,7 +177,7 @@
 <script src="js/diaryEdit.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="alert/dist/sweetalert-dev.js"></script>
+<!-- <script src="alert/dist/sweetalert-dev.js"></script> -->
 
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>

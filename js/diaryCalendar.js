@@ -217,7 +217,7 @@ function show_events(events, month, day) {
             dataID = String(events[i]["id"])
             var onClick = "id='" + editId + "' onclick='editFunction(" + '"' + dataID + '"' +")'"
             var onClickDelete = "id='" + deleteId + "' onclick='deleteFunction(" + '"' + dataID + '"' +")'"
-            var edit = $("<div class='event-name'><a " + onClick + "style='float:right;cursor:pointer;'>Edit Entry</a><a " + onClickDelete + "style='float:left;cursor:pointer;'>Delete Entry</a></div><br>");
+            var edit = $("<div class='flex-nowrap row'><a class='col' " + onClickDelete + "style='float:left;cursor:pointer;'>Delete Entry</a><a " + onClick + "style='float:right;cursor:pointer;'>Edit Entry</a></div><br>");
             var hours = $("<div class='event-name'> Hours Slept: <strong> "+events[i]["hours"]+" hours</strong></div><br>");
             var stress = $("<div class='event-name'> Stress Level: <strong> "+events[i]["stress"]+"</strong></div><br>");
             var anxiety = $("<div class='event-name'> Anxiety Level: <strong> "+events[i]["anxiety"]+"</strong></div><br>");

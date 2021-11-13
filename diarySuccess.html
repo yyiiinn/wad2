@@ -40,7 +40,7 @@
 </head>
    
     <!-- Diary -->
-    <body>
+    <body data-spy="scroll" data-target=".fixed-top">
     <br>
     <div id="diarySuccess" class="filter">
 		<div class="container">
@@ -86,20 +86,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<!-- spotify playlist & podcasts pop-up botton -->
-<script>
-//   function sptfy_btn() {
-//     // console.log(event.target);
-//     var spotify_btn = document.getElementById('spotify_btn');
-//     spotify_btn.innerHTML = "<a href='spotify.html'>" +
-//       "<img src='images/spotify_btn.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
-//     "</a>";
 
-//     var podcast_btn = document.getElementById('podcast_btn');
-//     podcast_btn.innerHTML =  "<a href='podcast.html'>" +
-//       "<img src='images/spotify_pc.png' style='width: 450px; margin-top: 20px; border-radius:30px'>" +
-//     "</a>";
-//   }
+<script>
 const uid = sessionStorage.getItem('uid');
 if(uid == null){
     window.location.href = "index.html"; 
@@ -116,12 +104,6 @@ else{
 
 </script>
 
-<!-- pop-up -->
-<!-- <script> -->
-<!-- //   $(function () {
-//     $('[data-toggle="popover"]').popover()
-//   }) -->
-<!-- </script> -->
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
 <!-- Don't change the format for any other products. -->
