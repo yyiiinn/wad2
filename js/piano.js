@@ -102,8 +102,6 @@ document.addEventListener('click', getNoteAudio);
 
 // Play current piano history
 async function playHistory() {
-  console.log(noteHistory);
-  console.log(keyHistory);
   for (let i = 0; i < noteHistory.length; i++) {
     await playNote(keyHistory[i]);
   }
