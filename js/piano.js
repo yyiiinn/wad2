@@ -1,7 +1,7 @@
-firebase.initializeApp(firebaseConfig);
-
 let noteHistory = [];
 let keyHistory = [];
+let suggestedMusic = {};
+let savedMusic = {};
 
 let keyMapping = {
   65: 'C',
@@ -38,9 +38,9 @@ function checkMobileBrowser() {
   }
 }
 
-// Clear history
+// Function to clear history
 function clearHistory() {
-  history = [];
+  noteHistory = [];
   keyHistory = [];
   document.querySelector('.playingHistory').innerHTML = '';
 }
@@ -102,23 +102,120 @@ document.addEventListener('click', getNoteAudio);
 
 // Play current piano history
 async function playHistory() {
+  console.log(noteHistory);
+  console.log(keyHistory);
   for (let i = 0; i < noteHistory.length; i++) {
     await playNote(keyHistory[i]);
   }
 }
 
-console.log(localStorage);
-console.log(sessionStorage);
+// Function to play suggested music
+async function playSuggested(musicName) {
+  musicData = suggestedMusic[musicName];
+  for (const aNote of musicData['keys']) {
+    await playNote(aNote);
+  }
+}
 
-const musicCollection = firebase.firestore().collection('Music');
-musicCollection.get().then((snapshot) => {
-  console.log('test');
-  snapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
+// Function to play suggested music
+async function playSaved(musicName) {
+  musicData = savedMusic[musicName];
+  for (const aNote of musicData['keys']) {
+    await playNote(aNote);
+  }
+}
+
+// Load saved music
+async function loadSuggestedMusic() {
+  const musicCollection = firebase.firestore().collection('Music');
+  musicCollection.get().then((snapshot) => {
+    document.getElementById('suggestedMusicList').innerHTML = '';
+    snapshot.forEach((doc) => {
+      let noteArray = doc.data().Notes ?? [];
+      let keysArray = doc.data().Keys ?? [];
+      let musicName = doc.data().name;
+      suggestedMusic[musicName] = {
+        notes: noteArray,
+        keys: keysArray,
+      };
+
+      document.getElementById('suggestedMusicList').innerHTML +=
+        `
+      <div class='row m-3'>
+    <div class="card container-fluid">
+      <div class="card-body">
+        <h5 class="card-title">` +
+        musicName +
+        `</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Notes</h6>
+        <p class="card-text">` +
+        noteArray.join(' ') +
+        `</p>
+      <button class="btn btn-primary" onclick="playSuggested('` +
+        musicName +
+        `')">Play For Me</button>
+      <button class="btn btn-secondary" onclick="playSuggested('` +
+        musicName +
+        `')">Play With Me</button>
+      </div>
+    </div>
+    </div>
+    `;
+    });
   });
-});
+}
+
+// Function to load saved music
+async function loadSavedMusic() {
+  let userEmail = sessionStorage.getItem('email');
+  let userMusicSnapshot = await firebase
+    .firestore()
+    .collection('Users/' + userEmail + '/Music')
+    .get();
+  if (userMusicSnapshot == null) {
+    document.getElementById('savedMusicList').innerHTML = `
+    <div class="row d-flex justify-content-center">
+      <div class="h5">No saved music found</div>
+    </div>`;
+    return;
+  }
+  userMusicSnapshot.forEach((doc) => {
+    document.getElementById('savedMusicList').innerHTML = '';
+    let noteArray = doc.data().Notes ?? [];
+    let keysArray = doc.data().Keys ?? [];
+    let musicName = doc.data().name;
+    savedMusic[musicName] = {
+      notes: noteArray,
+      keys: keysArray,
+    };
+
+    document.getElementById('savedMusicList').innerHTML +=
+      `
+      <div class='row m-3'>
+    <div class="card container-fluid">
+      <div class="card-body">
+        <h5 class="card-title">` +
+      musicName +
+      `</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Notes</h6>
+        <p class="card-text">` +
+      noteArray.join(' ') +
+      `</p>
+      <button class="btn btn-primary" onclick="playSaved('` +
+      musicName +
+      `')">Play</button>
+      </div>
+    </div>
+    </div>
+    `;
+  });
+}
 
 // run function on load
 window.onload = function () {
   checkMobileBrowser();
+  loadSuggestedMusic();
+  loadSavedMusic();
 };
+
+console.log(localStorage);
