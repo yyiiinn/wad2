@@ -1,3 +1,5 @@
+//calendar ui and code referenced from https://colorlib.com/wp/template/calendar-04/
+
 function createCalendar(){
     var date = new Date();
     var today = date.getDate();
@@ -7,33 +9,11 @@ function createCalendar(){
     $(".month").click({date: date}, month_click);
     // $("#add-button").click({date: date}, new_event);
     // Set current month as active
-    // new_event_json(10, "A Litttle Stress", "Cross", "Negative", "Furious", "Angry today.", date, today);
     $(".months-row").children().eq(date.getMonth()).addClass("active-month");
     init_calendar(date);
     var events = check_events(today, date.getMonth()+1, date.getFullYear());
     show_events(events, months[date.getMonth()], today);
 }
-
-// (function($) {
-
-	"use strict";
-
-// Setup the calendar with the current date
-$(document).ready(function(){
-    var date = new Date();
-    var today = date.getDate();
-    // Set click handlers for DOM elements
-    $(".right-button").click({date: date}, next_year);
-    $(".left-button").click({date: date}, prev_year);
-    $(".month").click({date: date}, month_click);
-    // $("#add-button").click({date: date}, new_event);
-    // Set current month as active
-    // new_event_json(10, "A Litttle Stress", "Cross", "Negative", "Furious", "Angry today.", date, today);
-    $(".months-row").children().eq(date.getMonth()).addClass("active-month");
-    init_calendar(date);
-    var events = check_events(today, date.getMonth()+1, date.getFullYear());
-    show_events(events, months[date.getMonth()], today);
-});
 
 // Initialize the calendar by appending the HTML dates
 function init_calendar(date) {
@@ -133,50 +113,6 @@ function prev_year(event) {
     init_calendar(date);
 }
 
-// Event handler for clicking the new event button
-function new_event(event) {
-    // if a date isn't selected then do nothing
-    if($(".active-date").length===0)
-        return;
-    // remove red error input on click
-    $("input").click(function(){
-        $(this).removeClass("error-input");
-    })
-    // empty inputs and hide events
-    $("#dialog input[type=text]").val('');
-    $("#dialog input[type=number]").val('');
-    $(".events-container").hide(250);
-    $("#dialog").show(250);
-    // Event handler for cancel button
-    $("#cancel-button").click(function() {
-        $("#name").removeClass("error-input");
-        $("#count").removeClass("error-input");
-        $("#dialog").hide(250);
-        $(".events-container").show(250);
-    });
-    // Event handler for ok button
-    $("#ok-button").unbind().click({date: event.data.date}, function() {
-        var date = event.data.date;
-        var name = $("#name").val().trim();
-        var count = parseInt($("#count").val().trim());
-        var day = parseInt($(".active-date").html());
-        // Basic form validation
-        if(name.length === 0) {
-            $("#name").addClass("error-input");
-        }
-        else if(isNaN(count)) {
-            $("#count").addClass("error-input");
-        }
-        else {
-            $("#dialog").hide(250);
-            console.log("new event");
-            new_event_json(name, count, date, day);
-            date.setDate(day);
-            init_calendar(date);
-        }
-    });
-}
-
 // Adds a json event to event_data
 function new_event_json(hours, stress, anxiety, feeling, word, thoughts, date, day, id) {
     var event = {
@@ -224,12 +160,6 @@ function show_events(events, month, day) {
             var feeling = $("<div class='event-name'> Feeling: <strong> "+events[i]["feeling"]+"</strong></div><br>");
             var word = $("<div class='event-name'> Word that represents the day: <strong> "+events[i]["word"]+"</strong></div><br>");
             var thoughts = $("<div class='event-name' style='max-height:200px;overflow-y:scroll;'> Thoughts for the day: <br><strong> "+events[i]["thoughts"]+"</strong><br></div>");
-            // if(events[i]["cancelled"]===true) {
-            //     $(event_card).css({
-            //         "border-left": "10px solid #FF1744"
-            //     });
-            //     event_count = $("<div class='event-cancelled'>Cancelled</div>");
-            // }
             $(event_card).append(edit).append(hours).append(stress).append(anxiety).append(feeling).append(word).append(thoughts);
             $(".events-container").append(event_card);
         }

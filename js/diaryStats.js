@@ -8,7 +8,7 @@ async function getDiary(){
     var test = await diaryRefs.where("userID", "==", uid).get()
     .then((querySnapshot) => {
         diaryData = querySnapshot.docs.map((doc) => ({
-            id: doc.id,             // will the id better if is using user's uid or auto generated id?
+            id: doc.id,      
             anxiety: doc.data().anxiety,
             date: doc.data().date,
             feeling: doc.data().feeling,
@@ -313,7 +313,10 @@ function callMonkeyLearn(moodArray){
     var feelings = []
     var color = []
     //call monkeylearn api
-    const token = '1dbd9fff3ba179eaa79bfef0a3412e9b3249cef3'
+    const token = '1dbd9fff3ba179eaa79bfef0a3412e9b3249cef3' 
+
+    //if prev token expired
+    // const token = 'ea201a414091a2ec6685d3224f9c7e217e7ba487'
     axios({
         method:'post',
         url: "https://api.monkeylearn.com/v3/classifiers/cl_pi3C7JiL/classify/",
@@ -341,25 +344,6 @@ function callMonkeyLearn(moodArray){
 }
 
 function wordCloud(feelings, color){
-    // var feelings = ["angry", "Angry", "Pissed", "doubtful", "Happy", "happy", "Neutral", "Normal", "Normal", "indifferent", "Excited", "grateful"];
-    // var color = ['#f7533b', '#f7533b', '#f7533b', '#f7533b', "#42a371", "#42a371", "#afb1ae", "#afb1ae", "#afb1ae", "#afb1ae", "#42a371", "#42a371"];
-    // data = Highcharts.reduce(feelings, function (arr, word) {
-    //       var obj = Highcharts.find(arr, function (obj) {
-    //           return obj.name === word;
-    //       });
-    //       if (obj) {
-    //           obj.weight += 1;
-    //       } else {
-    //           obj = {
-    //               name: word,
-    //               weight: 1,
-    //               color: color[counter]
-    //           };
-    //           arr.push(obj);
-    //       }
-    //       counter += 1;
-    //       return arr;
-    //   }, []);
     data = []
     const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
     for (var i = 0; i < feelings.length; i++){
