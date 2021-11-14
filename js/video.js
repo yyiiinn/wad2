@@ -59,7 +59,7 @@ async function getAllVideos() {
 
 getAllVideos();
 
-function myFunction() {
+function dropdownFilter() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("mylist");
   filter = input.value.toUpperCase();
