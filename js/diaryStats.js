@@ -313,7 +313,7 @@ function callMonkeyLearn(moodArray){
     var feelings = []
     var color = []
     //call monkeylearn api
-    const token = 'ea201a414091a2ec6685d3224f9c7e217e7ba487'
+    const token = '1dbd9fff3ba179eaa79bfef0a3412e9b3249cef3'
     axios({
         method:'post',
         url: "https://api.monkeylearn.com/v3/classifiers/cl_pi3C7JiL/classify/",

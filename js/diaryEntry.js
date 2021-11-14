@@ -81,8 +81,10 @@ async function getDiary(dateField){
 }
 
 function submitEntry(){
+    existed = false
     allFilled = true;
     var dateField = $('#dateField').val();
+    console.log(dateField)
     if (dateField == ""){
       $('#dateCheck').css("display", "block");
       allFilled = false;
