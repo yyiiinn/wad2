@@ -7,39 +7,26 @@
     <!-- Website Title -->
     <title>Count On Me - Diary Entry</title>
     <link rel="icon" href="images/hand_heart.png">
-	
-    <!-- Script -->
-    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
-    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
-    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
-    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
-    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
-    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-    <script src="js/scripts.js"></script> <!-- Custom scripts -->
-    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
 </head>
    
     <!-- Diary -->
     <body data-spy="scroll" data-target=".fixed-top">
 
-    <!-- navbar -->
-    <div id="nav-placeholder"></div>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-        $(function(){
-            const nav = sessionStorage.getItem('navbar');
-            if(nav == null){
-                $("#nav-placeholder").load("navbar.html");
-            }
-            else{
-                $("#nav-placeholder").load(nav);
-            }
-           
-        });
-    </script>
+   <!-- navbar -->
+   <div id="nav-placeholder"></div>
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+   <script>
+     $(function(){
+       const nav = sessionStorage.getItem('navbar');
+       if(nav == null){
+           $("#nav-placeholder").load("navbar.html");
+       }
+       else{
+           $("#nav-placeholder").load(nav);
+       }
+       
+   });
+   </script>
 
     <br>
     <div id="diarySuccess" class="filter">
@@ -77,6 +64,18 @@
     </body>
     </html>
 
+<!-- Script -->
+<script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+<script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+<script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+<script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="js/scripts.js"></script> <!-- Custom scripts -->
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
 <!-- <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
@@ -103,7 +102,6 @@ else{
 }
 
 </script>
-
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
 <!-- Don't change the format for any other products. -->
