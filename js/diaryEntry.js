@@ -4,7 +4,6 @@ const diaryRefs = firebase.firestore().collection("Diary")
 const uid = sessionStorage.getItem('uid');
 
 $(document).ready(function() {
-    console.log(uid)
     if(uid == null){
       window.location.href = "index.html"; 
     }
@@ -84,7 +83,6 @@ function submitEntry(){
     existed = false
     allFilled = true;
     var dateField = $('#dateField').val();
-    console.log(dateField)
     if (dateField == ""){
       $('#dateCheck').css("display", "block");
       allFilled = false;
