@@ -22,24 +22,24 @@
   <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
   <script src="js/scripts.js"></script> <!-- Custom scripts -->
 
+   <!-- navbar -->
+   <div id="nav-placeholder"></div>
+   <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+   <script>
+       $(function(){
+           const nav = sessionStorage.getItem('navbar');
+           if(nav == null){
+               $("#nav-placeholder").load("navbar.html");
+           }
+           else{
+               $("#nav-placeholder").load(nav);
+           }
+          
+       });
+   </script>
 </head>
 
-<body data-spy="scroll" data-target=".fixed-top">
-  <div id="nav-placeholder"></div>
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script>
-    $(function () {
-      const nav = sessionStorage.getItem('navbar');
-      if (nav == null) {
-        $("#nav-placeholder").load("navbar.html");
-      }
-      else {
-        $("#nav-placeholder").load(nav);
-      }
-
-    });
-  </script>
-
+<body>
   <br><br><br>
   <br><br>
   <div class="container">
